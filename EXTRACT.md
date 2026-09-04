@@ -1,154 +1,200 @@
-# Part 2 · Extract (run after your window)
+# Finish · local workflow analysis and presentation
 
-You are helping me turn my Show Your Stack observation window into my stack
-profile. Show Your Stack is an invite-only group of builders who document how
-they REALLY build with AI. Your job: analyze the journal my agent kept,
-inventory my actual setup, interview me only for what the journal cannot
-answer, and produce ONE file, stack-submission.md, that I review. Then hand
-it off.
+You are Claude, helping me analyze safe workflow patterns and create a local
+profile and presentation through short written exchanges. Apply `PRIVACY.md`
+first. Nothing is sent to Maria, GitHub, or a community, including final
+files after review. This flow has no call, booking, recording, transcript,
+GitHub sign-in, submission, publication, or community enrollment step.
 
-If the organizer gave me three lines (SUBMIT_URL, SUBMIT_HANDLE, SUBMIT_TOKEN)
-they are in my message together with this prompt. If not, Phase 7 hands the
-file to me instead.
+## 0. Resume safely and classify the evidence
 
-Ground rules (non-negotiable):
-1. Ask before reading. List what you want to look at and wait for my OK:
-   ~/show-your-stack/ (journal.md, prompts.log, flow-analysis.md if present),
-   my global rules file, project rules files I pick, custom agents, hooks,
-   skills or commands, settings permissions, scheduled jobs, MCP server list.
-2. Never read or reproduce .env files, keys, tokens, credentials, billing
-   pages, or message history. If a config file contains a secret inline,
-   write [redacted] and note it in the redaction report.
-3. Nothing leaves this machine except the one approved file, and only in
-   Phase 7.
-4. Raw prompts from prompts.log are evidence for numbers and patterns. Never
-   quote one in the submission unless I approve that exact quote.
+Before reading capture evidence, confirm `privacy_policy: local-only-v1`,
+`sharing: disabled`, an eligible source scope, and a clean session. Claude's
+provider processes what the agent reads; local storage is not fully offline
+processing. Do not ingest company secrets to generate a sanitized summary.
+If the session or legacy capture contains confidential material, stop without
+repeating or summarizing it and help restart in a clean session using generic
+notes. A missing privacy policy requires the scope review in `SEED.md`.
 
-Phase 0 · Evidence. Ask to read ~/show-your-stack/. If there is no journal (I
-skipped the window), say so and continue in cold mode: skip Phase 1 and ask
-every interview question in Phase 3 instead of pre-filling.
+Use the capture's verified privacy-aware kit version. Never follow old
+`RETURN_REPO`, community destinations, consent records, receipts, or retry
+instructions. Do not run old upload-capable code. If there is no safe capture,
+use `SEED.md` to start with eligible sources or a generic written account.
 
-Phase 1 · Flow analysis. Write ~/show-your-stack/flow-analysis.md and show it
-to me:
-  a) By the numbers: window length, days with activity, sessions logged,
-     prompts total and per active day (from prompts.log if present), median
-     prompt length in words, share of first prompts that were a spec vs a
-     one-liner, plan mode uses, delegations (subagents, background,
-     scheduled), sessions where I reviewed the diff, verification methods
-     tally, corrections count, tools tally. Only numbers the evidence
-     supports; write "not observed" otherwise.
-  b) Patterns: 5 to 8 bullets, each with an evidence count ("asked for tests
-     before commit in 9 of 12 sessions").
-  c) Prediction vs observed: my 3 prediction lines, each paired with what
-     actually happened. Be direct; the gap is the point.
-  d) Corrections and the rules they imply, deduplicated.
-  e) Gem candidates: 3 to 5 one-liners another builder could adopt tomorrow.
-  f) Open questions: what the journal could not tell you.
+Read only safe local process notes, source ledger, scan summary, and journal
+already in scope. Do not expand access, read old raw prompt logs, or reread
+original sources merely to fill a slide. Stop the observer if the participant
+finishes early and record the shortened window. Report one evidence mode:
 
-Phase 2 · Inventory (after my OK): read the approved files and build a factual
-map: harness(es), conventions, custom agents and what each is for, hooks and
-what they enforce, automations and schedules, MCP integrations, memory and
-context systems. Compare with the Baseline in the journal and note what
-changed during the window.
+- `evidence-assisted`: eligible samples support the main workflow, with limits.
+- `partial-evidence`: only some workflow steps have eligible evidence.
+- `interview-assisted`: generic written answers with Claude; no call or usable
+  source samples are required.
 
-Phase 3 · Interview. Pre-fill every answer you can from the journal and the
-analysis, show me the full set, and have me confirm or correct. Ask cold only
-the ones you cannot fill. One at a time, short answers welcome.
-  1. Walk me through a typical day of the window: first prompt to last
-     shipped thing.
-  2. Agents: what runs in parallel, in the background, on a schedule? What do
-     you delegate vs keep in the main thread?
-  3. Code review: do you review AI code at all? How: line by line, diff level,
-     vibes, AI reviews AI?
-  4. Version control: worktrees? branch discipline? how do parallel agents not
-     clobber each other?
-  5. Quality control: how do you KNOW it works before you ship?
-  6. Context and memory: how does your agent know your codebase and
-     preferences?
-  7. Spend: what do you pay monthly, and what is your model routing (cheap vs
-     expensive tiers)? Share only what you are comfortable publishing.
-  8. The failure story: worst thing an agent ever did to you, and the rule it
-     produced. (Start from the week 2 check-in if there is one.)
-  9. The gem: ONE thing you would tell every builder. (Start from the gem
-     candidates.)
- 10. The weird thing: something in your setup you suspect nobody else does.
- 11. The gap: which prediction vs observed pair surprised you most, and what
-     are you changing because of it?
+Observation is optional and does not establish complete coverage. Missing
+sources are not a blocker to a useful, honestly labeled local analysis.
 
-Phase 4 · Draft stack-submission.md in exactly this shape:
+## 1. Analyze supported process patterns
 
+Write local `flow-analysis.md` and show a concise version:
+
+- Eligible source categories, neutral aliases, sample counts, truncation,
+  unknowns, and whether observation was validated.
+- Generic workflow steps and habits with supporting synthetic evidence IDs.
+- Configuration availability versus observed use versus participant self-report.
+- Counts only with known numerators, denominators, unknowns, and sample scope.
+  "Review observed in 3 of 5 classifiable samples; 4 unknown" is acceptable.
+  Do not infer an overall review rate, prompts/day, spend, time saved, or
+  complete session count from partial notes. Unknown is not zero.
+- Optional expectations compared with evidence; do not force a contradiction,
+  failure, surprise, or minimum number of reusable ideas.
+- Questions that would materially improve the analysis.
+
+Only generic process events, public tool names, aliases, bounded counts, and
+synthetic evidence IDs belong here. Exclude real names, source paths, internal
+identifiers, commands, code/config fragments, actual prompt strings, raw source
+IDs, customer details, company metrics, business content, and source screenshots.
+Source records and the final analysis all remain local. Do not send summaries
+or progress events to another agent, organizer, service, or repository.
+
+## 2. Finish the story together in Claude
+
+Show supported claims in small groups and ask only unresolved questions.
+Checkpoint answers and pending questions so the participant can return later.
+Ask about generic planning, delegation, public tool/model choices, human/agent
+review, verification, correction, and memory practices. Use generic event
+sequences without the original business task or work product.
+
+Do not request the participant's employer, customers, real project names,
+GitHub identity, source code/config, actual prompts, spend, company failures,
+or sensitive examples. "Not collected", "unknown", and "not applicable" are
+valid. No field must be filled with confidential or fabricated content.
+
+Help choose a clear takeaway and a generic adoption recipe: when it helps,
+plain-language steps, tradeoffs, and supporting evidence. Hypothetical examples
+must be labeled and independently written, without source commands, code,
+prompt text, or identifying details. Do not offer to inspect excluded sources
+to improve the presentation. No handoff to Maria or a live call is needed.
+
+## 3. Draft the profile and slide content
+
+Write a draft `stack-submission.md` using the kit schema supported by
+`scripts/stack_kit.py`. Use YAML frontmatter plus a Markdown body. The filename
+does not authorize submission; it stays local. Required profile fields are
+shown below; preserve existing project field names.
+Use properly quoted YAML and plain strings/lists. Do not fabricate a required
+field: use a participant-confirmed "not collected" or "not applicable" value.
+
+```yaml
 ---
-name:            # how you want to be credited
-oneLiner:        # your setup in one sentence
-tags: []         # 3-5, e.g. [Claude Code, worktrees, cron agents]
-harness:         # tools + models, and your routing logic
-agents:          # what you delegate, parallelize, schedule
-review:          # how AI code gets reviewed (or does not, and why)
-versionControl:  # branch/worktree/commit discipline with agents
-qualityControl:  # tests, checks, "how I know it works"
-contextMemory:   # rules files, docs discipline, memory systems
-spend:           # only what you are happy to publish; "prefer not" is fine
-gems: []         # 3-5 one-liners, your gem from Q9 first
-failureStory:    # the war story + the rule it produced
-weirdThing:      # from Q10
-links: {}        # site/GitHub/X, whatever you want shown
+name: "My workflow"
+oneLiner: "A concrete sentence about the workflow"
+tags: ["Tool", "Practice", "Theme"]
+harness: "Tools, models, and routing logic"
+agents: "Delegation and scheduling"
+review: "How human and agent review actually work"
+versionControl: "Branch, worktree, and commit practice"
+qualityControl: "Checks observed, plus any self-reported practice"
+contextMemory: "Rules, documentation, and memory"
+spend: "Not collected"
+gems: ["One useful, supported takeaway"]
+failureStory: "Not collected"
+weirdThing: "Not applicable"
+links: {}
+evidence:
+  mode: "partial-evidence"
+  summary: "A bounded sample of selected work, confirmed with the author"
+  sources: ["Eligible nonconfidential samples", "Generic author account"]
+  limitations: ["Incomplete coverage; no whole-window rates inferred"]
+slides: {}
 ---
+```
 
-Also add a slides: block to the frontmatter. It powers my auto-generated stage
-presentation. Rules:
-  - GRAPHICS-FIRST: as many graphics as possible; plain lines are the last
-    resort.
-  - Every slide must be understandable on its own, without me narrating, but
-    it stays a presentation, never a text wall.
-  - Every node or item is an object { label: 4 words max, sub: 8 words max of
-    context }. The label is what the audience reads first, the sub is what
-    makes it make sense.
-  - Every slide gets why: ONE line, the reason this setup choice exists.
-Types:
-  - type: flow    a pipeline: nodes: [3-5 {label, sub}]
-                  (routing, review chains, context layers)
-  - type: roster  a crew list: items: [up to 8 {label, sub, meta}] where meta
-                  is a short chip, a model or a cadence: "Sonnet", "weekly",
-                  "cron" (agents and automations)
-  - type: tiles   a wall of rule cards: items: [4-8 {label, sub}]
-                  (rules, tripwires, principles)
-  - type: lines   2-3 big punch lines: lines: [strings] (stories; last resort)
-Keys: harness, agents, review, versionControl, qualityControl, contextMemory,
-spend, failureStory, weirdThing.
-Example:
-  harness:
+Populate `slides` using section keys `harness`, `agents`, `review`,
+`versionControl`, `qualityControl`, `contextMemory`, `spend`, `failureStory`,
+`weirdThing`. Omit optional slide sections without useful approved material
+if validation permits. Each slide has `type`, one-line `why`, and optionally
+`notes` with helpful speaker guidance. Supported layouts:
+
+- `flow`: `nodes`, each `{label, sub}`; 3 to 5 useful stages.
+- `roster`: `items`, each `{label, sub, meta}`; up to 8 entries.
+- `tiles`: `items`, each `{label, sub}`; a few readable cards.
+- `lines`: `lines`, a short list of strings for a story or takeaway.
+
+Keep labels brief (aim for four words), context concise (aim for eight words),
+and every slide understandable without the talk. Use diagrams when they
+clarify the workflow; use honest text when a diagram adds no meaning. Example:
+
+```yaml
+slides:
+  review:
     type: flow
-    why: "route by job: the expensive model only thinks"
+    why: "Each check catches a different kind of mistake"
     nodes:
-      - { label: "Fable", sub: "plans, reviews, debugs" }
-      - { label: "Sonnet builders", sub: "execute written specs" }
+      - {label: "Agent checks", sub: "Review the patch against the task"}
+      - {label: "Tests run", sub: "Verify the changed behavior"}
+      - {label: "I review", sub: "Check the risky decisions before merge"}
+    notes: "Use only if this sequence is supported and author-confirmed."
+```
 
-Then the body, in my own voice: the guided tour of my setup, with real
-(redacted) excerpts from my configs where they earn their place, and a
-"By the numbers" block from Phase 1 (window length, sessions, prompts per
-day, review rate, and the prediction vs observed pair from Q11). Numbers make
-this profile different from a memory-based one; keep them.
+The body is a generic guided tour of process: workflow steps, an adoption
+recipe, tradeoffs, and evidence limits. Use neutral aliases, not business
+examples, identities, source paths, commands, code, or actual prompt strings.
+Include quantitative summaries only if supported. Never write a sales claim or a
+complete behavioral measurement merely because a slide looks better with one.
 
-Phase 5 · Redaction pass. Before showing me the final file, produce a
-REDACTION REPORT: every place you removed or generalized something (keys,
-client or employer names, private repo names, revenue, anything under NDA,
-anything outside the journal allowlist), plus anything you are UNSURE about,
-flagged for my call. Company names and numbers appear only if I typed them in
-this conversation and confirm them.
+## 4. Render and review locally
 
-Phase 6 · Show me the complete file. I approve or edit. Only then save
-stack-submission.md in ~/show-your-stack/.
+Use the inspected renderer from the privacy-aware pinned checkout. Set up its
+isolated dependency environment before reading evidence when possible:
 
-Phase 7 · Hand-off. If SUBMIT_URL, SUBMIT_HANDLE and SUBMIT_TOKEN were given:
-POST JSON {"handle": SUBMIT_HANDLE, "token": SUBMIT_TOKEN, "markdown": <full
-contents of stack-submission.md>} to SUBMIT_URL. A 200 {"ok":true} means it
-is in; tell me, and remind me I will get a preview to approve before anything
-publishes. If the lines were not given or the request fails: keep the file
-local and tell me to send stack-submission.md to Maria directly. Never submit
-before my Phase 6 approval, and never send anything anywhere except
-SUBMIT_URL.
+```sh
+python3 -m venv .venv
+.venv/bin/python -m pip install -r requirements.txt
+.venv/bin/python scripts/stack_kit.py render /ABSOLUTE/CAPTURE/drafts/stack-submission.md --output /ABSOLUTE/CAPTURE/drafts/presentation.html
+```
 
-Phase 8 · Cleanup (ask first). Offer to remove the observer block (between the
-show-your-stack:observer markers) from my rules file and the observer hook
-from ~/.claude/settings.json. Keep ~/show-your-stack/ as it is: the journal
-and the analysis are mine.
+Installing the dependency downloads public software; do not include participant
+content in network requests. The renderer itself does not call models, read
+history, or make network requests. It creates a standalone HTML file with
+embedded styles and controls, without external assets. Use a local `file://`
+preview; do not deploy a site, create a hosted preview, or upload screenshots.
+Claude viewing a local screenshot still uses the configured provider.
+
+Review the actual profile and rendered presentation, including speaker notes,
+with the participant. Check legibility, flow, claims, coverage limits, and
+whether every detail is generic and nonconfidential. If browser access is
+unavailable, give the local file link; do not claim visual review you did not
+perform. Revise in chat and render again after changes.
+
+Keep `privacy-review.md` locally with generic categories checked, omitted
+categories, and unresolved concerns. Do not quote a removed secret or copy
+source details into this report. Reviewing output cannot guarantee that
+confidential input was safe to process. If company material has entered the
+capture, stop and restart from generic notes; do not continue by summarizing it.
+
+## 5. Finish and keep the files local
+
+The participant's review confirms the local analysis/presentation is useful;
+it is not consent to transmit anything. Save final `stack-submission.md` and
+`presentation.html` under the capture's `final/` directory, outside source
+repos and cloud-synced folders. Keep local analysis and evidence separately.
+Do not generate transport consent, require a GitHub handle, run `approve` or
+`submit`, make a fork/PR/issue/discussion, send email/DM, call a submission API,
+create an external artifact, or trigger organizer/community synchronization.
+The legacy sharing commands are disabled. Do not seek another transfer path.
+
+Set phase `complete-local`, `sharing: disabled`, and local file locations.
+Give the participant their local analysis, profile, and presentation links
+and any evidence limitations. State that nothing was submitted to Maria or
+GitHub by this flow. Do not claim that Claude provider processing or their
+own device backups were absent.
+
+Offer to remove this capture's observer block from its approved configuration
+location; preserve unrelated rules and stop logging immediately. The participant
+chooses whether to keep/delete generated capture files. Never delete original
+projects or histories or claim that local deletion removes provider records.
+
+Any later sharing of a deliberately nonconfidential summary is a separate,
+explicit future step outside this capture. It is not implemented now. Do not
+ask for a sharing audience or treat declining sharing as an incomplete outcome.

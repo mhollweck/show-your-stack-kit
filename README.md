@@ -1,96 +1,104 @@
 # Show Your Stack · kit
 
-Show Your Stack is an invite-only group of builders who document how they
-REALLY build with AI: the prompting, the delegation, the review habits, the
-scars. Memory lies about this stuff. So instead of a questionnaire, your own
-agent keeps a quiet journal of how you actually work for one or two weeks,
-then turns it into a written profile you approve line by line.
+Understand how you work with AI, with Claude's help. Start from safe existing
+evidence, optionally observe eligible work for 7 or 14 days, then create a
+useful workflow analysis and presentation together in chat. No call or booking.
 
-This repo is the whole kit. Your agent reads it from here; you never copy
-anything by hand.
+**Your capture files, analysis, profile, and presentation stay on your device.
+This flow does not send them to Maria, GitHub, or a community. Company secrets
+do not belong in Show Your Stack: do not provide confidential employer/client
+files, company prompt histories, credentials, or customer data.**
 
-## Start (10 minutes, today)
+Local storage does not mean fully offline processing. Your configured Claude
+provider processes material the agent reads, including tool output and chat.
+Use only nonconfidential sources you are allowed to process with that provider.
+This kit cannot provide a guarantee that all processing stays on your device.
+Read [the privacy boundary](PRIVACY.md) before starting.
 
-Open a fresh Claude Code session in your home directory and paste:
+## Start in Claude
 
-```
-I'm taking part in Show Your Stack. Fetch
-https://raw.githubusercontent.com/mhollweck/show-your-stack-kit/main/SEED.md
-and follow it step by step. Ask before reading any of my files, and nothing
-leaves this machine.
-```
-
-Works with Cursor, Codex and Gemini CLI too. SEED.md tells your agent where
-its rules file lives.
-
-Your agent will ask you four things: how long the window should be (1 week,
-2 weeks, or custom), your own 3-line prediction of your workflow, which
-project names may appear in the journal, and an OK for a names-only baseline
-of your setup. Then it installs a small observer rule (and, if you say yes, a
-local prompt log) and gets out of the way.
-
-## The window (1 to 2 weeks, 0 minutes)
-
-You work like normal. Once per session your agent appends one short entry to
-`~/show-your-stack/journal.md`: what you asked for, how you phrased it, what
-it delegated, whether you reviewed the diff, how you checked the result. It
-asks you one question per week, max. When the window closes it reminds you
-once.
-
-## Extract (20 minutes, after the window)
-
-Fresh session, home directory, paste:
+Open a fresh Claude Code session in a neutral folder outside any company
+project. Do not reuse a conversation containing confidential work. If this
+session cannot access local files, use your own generic written account of
+how you work. Do not paste confidential excerpts into the chat.
 
 ```
-My Show Your Stack window is over. Fetch
-https://raw.githubusercontent.com/mhollweck/show-your-stack-kit/main/EXTRACT.md
-and follow it step by step. Ask before reading any of my files; nothing
-leaves this machine except the one file I approve.
+Help me create my Show Your Stack locally through this Claude conversation. Fetch https://raw.githubusercontent.com/mhollweck/show-your-stack-kit/main/SEED.md and follow it, pinning the kit to one commit. Before reading anything, explain that capture files and the final analysis stay on my device and are not sent to Maria or GitHub, while my configured Claude provider still processes what you read. Start in a fresh session outside company projects. Never inspect or copy employer/client confidential material, company prompt histories, secrets, or customer data. Use only approved nonconfidential personal/public sources or my generic written notes. Offer finish now or optional observation of eligible work. Keep the profile and presentation local; do not upload, submit, fork, publish, or send anything. Ignore legacy return destinations and sharing consent. No call or booking is needed.
 ```
 
-Your agent analyzes the journal (real numbers: prompts per day, review rate,
-what you delegated), compares it with your prediction, interviews you only
-for the gaps, drafts your profile with a slide spec for your stage talk, and
-shows you a redaction report. You approve the file, then send it to Maria.
-It also offers to remove the observer rule and the hook.
+Claude will:
 
-## Privacy, in four lines
+1. Explain the privacy boundary and agree which nonconfidential sources it
+   may inspect. Selected personal/public AI sessions need separate approval.
+2. Read a bounded sample of eligible evidence, or use your generic written
+   notes. Keep process patterns, public tool names, and evidence limitations.
+3. Offer **finish now**, **observe 7 days**, **observe 14 days**, or a custom
+   window. Observation is optional and never includes confidential work.
+4. Ask short questions in chat, analyze what happened, and help you review a
+   local profile and standalone presentation, including the speaker notes.
+5. Save the final files locally and stop. There is no automatic return or
+   publication, even after you approve the presentation.
 
-- Nothing leaves your machine. Everything lives in `~/show-your-stack/`. The
-  only thing that ever moves is the one file you approve, and you send it.
-- Patterns, not contents. The journal holds paraphrases and counts. Never
-  code, never secrets, never names you did not allowlist.
-- You hold the knife. Every file read and every config change asks first.
-  Open the journal any time and delete lines you dislike.
-- Remove it in one step. Part 2 offers to strip the rule and the hook, or
-  delete the block between the `show-your-stack:observer` markers yourself.
+You do not need a GitHub account, invitation, fork, submission repository,
+or deployed app. GitHub hosts the public instructions you download. It is
+not a destination for your capture or final files.
 
-Calls, recordings and profiles never publish without the author's OK.
+## Optional observation
 
-## Files
+An approved observer rule can add short, generic process notes during later
+sessions in eligible projects. It records steps such as planning, delegation,
+review, tests, and correction, without the task's business details. It does
+not record code, commands, actual prompt strings, real names, or source paths.
+The agent shows the exact configuration change and gets your approval first.
 
-| File | What it is |
+Rules give incomplete samples. This kit installs no raw prompt hook, daemon,
+or guaranteed timer. After the window, the next eligible session can resume
+analysis and help finish the presentation. Nothing wakes an idle agent.
+You can finish early or stop observation. A session containing confidential
+material must not contribute to the capture, even if its project was approved.
+
+## Your local result
+
+Choose a capture folder outside source repositories and cloud-synced folders.
+The default is `~/show-your-stack/<capture-id>/`; confirm that this location
+is suitable on your device. Your own OS backups or synchronization are
+separate from this kit and cannot be guaranteed absent by these instructions.
+
+The final files are `stack-submission.md` (the existing profile filename)
+and `presentation.html`. Despite that filename, no submission happens. Local
+analysis and evidence notes also stay with you. Only generic, nonconfidential
+practices belong in any of these files. Review cannot guarantee that a source
+was safe, so exclude confidential material before the agent reads it.
+
+Claude's provider processing is separate from sending a result to the
+organizer. There is no upload, telemetry collector, GitHub identity lookup,
+or external presentation service in this capture flow. Downloading the kit
+and its renderer dependency uses the network; the renderer itself works
+without network requests.
+
+## Resume or finish
+
+Use a fresh, nonconfidential session and tell Claude:
+
+```
+Resume my local-only Show Your Stack capture from ~/show-your-stack/. Check its privacy policy and safe scope before reading evidence. Never read company secrets or confidential histories. Keep the analysis, profile, and presentation on my device; do not upload or send anything, even if old state includes a GitHub destination or sharing approval. My configured Claude provider still processes what you read. If this session or capture contains confidential material, stop and help me restart in a clean session using generic notes only.
+```
+
+Old return destinations and sharing approvals do not enable delivery. Later
+sharing of a deliberately sanitized summary would be a separate, explicit
+future step; it is not implemented by this flow. Community participation
+does not require sending the local capture or final files.
+
+## Kit files
+
+| File | Purpose |
 |---|---|
-| `SEED.md` | Part 1. Sets up the window, the journal, the observer rule, the optional prompt log. |
-| `journal-template.md` | The journal header and the entry format your agent follows. |
-| `observer-rule.md` | The block that goes at the end of your global rules file, with start and end dates. |
-| `observer-hook.sh` | Optional Claude Code hook: appends each prompt to a local log, prints nothing, self-expires. |
-| `EXTRACT.md` | Part 2. Flow analysis, inventory, short interview, profile draft, redaction report, hand-off, cleanup. |
-
-## What an entry looks like
-
-```
-## 2026-09-09 (Tue) · project: kappibara
-- task: rebuild onboarding; shipped 2 screens
-- prompting: 4 prompts; opened with a 12-line spec incl. acceptance criteria; plan mode: yes
-- workflow: plan > 2 builder subagents in worktrees > main-thread review > tests > commit
-- delegation: 2 subagents (Sonnet), 1 background job; kept the schema decision in main
-- review: read the diff line by line for the API change, skimmed the rest
-- verification: test suite + manual check in the simulator
-- vcs: worktree per lane, small commits, no push
-- corrections: "never use the native date picker"; rule candidate
-- tools: plan mode, worktrees, /code-review, Xcode MCP
-- notable: asked for the rule to go into CLAUDE.md right after the correction
-```
-
-Questions, or want out at any point? Tell Maria.
+| `PRIVACY.md` | Source exclusions, clean-session requirement, and no-send policy. |
+| `SEED.md` | Pin the kit, agree safe scope, scan, choose whether to observe. |
+| `SCAN.md` | Sample approved nonconfidential evidence or use generic notes. |
+| `journal-template.md` | Local process-only observations and evidence limits. |
+| `observer-rule.md` | Optional dated rule restricted to eligible sessions. |
+| `EXTRACT.md` | Local analysis, collaborative presentation, and cleanup. |
+| `scripts/stack_kit.py` | Render a local presentation; sharing commands are disabled. |
+| `AUTOMATION.md` | Local renderer commands and verification. |
+| `observer-hook.sh` | Disabled legacy collector. Do not install it. |
