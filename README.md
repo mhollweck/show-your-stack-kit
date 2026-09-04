@@ -1,88 +1,112 @@
-# Show Your Stack · understand the workflow behind the tools
+# Show Your Stack · kit
 
-Your development stack includes the tools you built yourself: unpublished
-scripts, agent wrappers, local apps, aliases, skills, integrations, and the
-small automations that connect them. Claude should discover those alongside
-the languages, frameworks, models, and services you use, then explain how
-the whole workflow operates and improves.
+Show Your Stack is an invite-only group of builders who document how they
+REALLY build with AI: the prompting, the delegation, the review habits, the
+scars. Memory lies about this stuff. So instead of a questionnaire, your own
+agent keeps a quiet journal of how you actually work for one or two weeks,
+then turns it into a written profile you approve line by line.
 
-The result is **one detailed local document, stack-analysis.md**: your stack
-map, important custom tools, real task walkthroughs, decision rules, human
-checks, failure/recovery paths, tradeoffs, and practices worth teaching.
-It becomes the source for a later community entry and deck. No call needed.
+This repo is the whole kit. Your agent reads it from here; you never copy
+anything by hand.
 
-**Your capture stays with you.** Nothing is uploaded to Maria or GitHub.
-Personally owned private tooling can be included with your permission; company/
-client secrets and credentials cannot. Claude's configured provider processes
-what it reads, so local files do not mean offline AI. Read [PRIVACY.md](PRIVACY.md)
-before choosing sources. You can explain a tool without exposing its code.
+**No company secrets, ever.** Employer and client material is out of scope
+before anything is read: no company repos, client code, internal docs, work
+chat, customer data. If your day job lives in a company codebase, the journal
+records how you work (prompting, delegation, review, verification), never
+what the code, product, or client is. Your agent asks you to mark that scope
+before it reads a single file.
 
-## Start with your agent's existing knowledge
+## Start (10 minutes, today)
 
-Use Claude Code with relevant authorized context about your work. A fresh
-blank conversation is not required when that context is safe. If Claude
-cannot access files, it can work from your descriptions and mark what it
-cannot verify. No public repository, GitHub identity, or invitation is needed.
+Open a fresh Claude Code session in your home directory and paste:
 
 ```
-Help me understand my full development stack, including personally owned unpublished tools, scripts, agents, and workflow glue. Fetch https://raw.githubusercontent.com/mhollweck/show-your-stack-kit/main/SEED.md and follow one pinned kit commit. Use relevant authorized context as leads, then inspect only sources I approve. Private does not mean ineligible; company/client secrets and credentials remain excluded, and my configured Claude provider processes what you read. Trace what invokes each important tool, its inputs, outputs, decisions, human gates, failures, and evidence of actual use. Ask focused questions about missing connections and why choices exist. Finish now or offer observation only for specific gaps. Consolidate everything in one local stack-analysis.md for later community/deck preparation. Do not upload or send anything, and do not change my stack. No call is needed.
+I'm taking part in Show Your Stack. Fetch
+https://raw.githubusercontent.com/mhollweck/show-your-stack-kit/main/SEED.md
+and follow it step by step. Ask before reading any of my files, and nothing
+leaves this machine.
 ```
 
-Claude will:
+Works with Cursor, Codex and Gemini CLI too. SEED.md tells your agent where
+its rules file lives.
 
-1. Start from what it already knows, then agree a scope that includes your
-   own tooling locations as well as selected projects and past sessions.
-2. Follow approved references across aliases, scripts, safe configuration,
-   skills/agents, schedules, checks, and handoff artifacts. It does not run
-   discovered tools just to inspect them.
-3. Separate actual use from installed, remembered, experimental, and retired
-   tools. Trace representative work and keep unanswered questions visible.
-4. Ask focused questions about intent, missing connections, manual decisions,
-   maintenance, and what works or does not. Finish now, or optionally observe
-   eligible work for 7 / 14 / custom days to resolve specific gaps.
-5. Review one document with you. A local evidence appendix supports the story;
-   selected reviewed sections can later become a community entry and deck.
+Your agent will ask you five things: how long the window should be (1 week,
+2 weeks, or custom), your own 3-line prediction of your workflow, which
+folders are company or client work (excluded from every read), which personal
+project names may appear in the journal, and an OK for a names-only baseline
+of your setup. Then it installs a small observer rule (and, if you say yes, a
+local prompt log) and gets out of the way.
 
-For example, a useful finding explains how your task wrapper creates isolated
-worktrees, stops on a failed check, and prepares evidence for a human before
-merge, if those details are supported. "Uses AI agents and Git" misses the
-mechanism. Names can be aliased later without removing that useful detail.
+## The window (1 to 2 weeks, 0 minutes)
 
-## What remains private
+You work like normal. Once per session your agent appends one short entry to
+`~/show-your-stack/journal.md`: what you asked for, how you phrased it, what
+it delegated, whether you reviewed the diff, how you checked the result. It
+asks you one question per week, max. When the window closes it reminds you
+once.
 
-Scope, notes, evidence, document, and any later locally rendered asset stay
-in your chosen folder outside Git checkouts and cloud-synced directories.
-The main document labels what could be shared, what needs an alias, and what
-must remain in its local-only appendix. Those labels are not sharing consent.
-No raw histories, credentials, or company/client confidential material belong
-in any section. Existing context or prior project access is not permission
-to read additional sources. See PRIVACY.md for mixed/uncertain sources.
+## Extract (20 minutes, after the window)
 
-This kit installs no raw prompt hook, upload service, daemon, or guaranteed
-timer. Observation is a partial sample. The next eligible session after the
-window may resume analysis; an idle agent does not wake itself. The local
-renderer makes no network/model calls; fetching the public kit or dependency
-uses the network without participant data attached.
-
-## Resume
+Fresh session, home directory, paste:
 
 ```
-Resume my local Show Your Stack analysis. Fetch https://raw.githubusercontent.com/mhollweck/show-your-stack-kit/main/SEED.md and follow one pinned kit commit. Check minimal saved policy and scope before reading stack-analysis.md or any evidence; reuse eligible work and ask only for missing scope. Use relevant authorized context and help close important gaps about my tools and workflow, including personally owned unpublished tooling. Keep company/client secrets out, distinguish remembered/configured/observed facts, and keep everything local. Do not upload or reuse old sharing consent. My configured Claude provider still processes what you read.
+My Show Your Stack window is over. Fetch
+https://raw.githubusercontent.com/mhollweck/show-your-stack-kit/main/EXTRACT.md
+and follow it step by step. Ask before reading any of my files; nothing
+leaves this machine except the one file I approve.
 ```
 
-Legacy RETURN_REPO, sharing consent, and receipts do not enable export. The
-old approve/submit commands remain disabled. Creating a local document or deck
-does not send it. A future community-sharing step needs a separate decision.
+Your agent analyzes the journal (real numbers: prompts per day, review rate,
+what you delegated), compares it with your prediction, interviews you only
+for the gaps, drafts your profile with a slide spec for your stage talk, and
+shows you a redaction report. You approve the file, then your agent opens a
+pull request with that one file into Maria's private community repo
+(`mhollweck/show-your-stack-community`). You need a GitHub account with the
+`gh` CLI logged in, and Maria's collaborator invite accepted; if that fails,
+you send Maria the file instead. Maria's merge makes your profile visible to
+the members of that private repo, nobody else. The agent also offers to
+remove the observer rule and the hook.
 
-## Kit files
+## Privacy, in four lines
 
-| File | Purpose |
+- No company secrets. Company and client scope is excluded before any read,
+  and workflow patterns are all that gets written about work sessions.
+- Nothing leaves your machine during the window. Everything lives in
+  `~/show-your-stack/`. The only thing that ever moves is the one profile you
+  approve, as a pull request you read before it opens.
+- Patterns, not contents. The journal holds paraphrases and counts. Never
+  code, never secrets, never names you did not allowlist.
+- You hold the knife. Every file read and every config change asks first.
+  Open the journal any time and delete lines you dislike.
+- Remove it in one step. Part 2 offers to strip the rule and the hook, or
+  delete the block between the `show-your-stack:observer` markers yourself.
+
+Calls, recordings and profiles never publish without the author's OK.
+
+## Files
+
+| File | What it is |
 |---|---|
-| SEED.md | Agree scope, use existing context, pin the kit, choose finish/observe. |
-| SCAN.md | Discover the full stack and inspect the mechanics of custom tooling. |
-| DOSSIER.md | Structure the one working document and its evidence appendix. |
-| EXTRACT.md | Close gaps, review the full account, prepare later asset candidates. |
-| PRIVACY.md | Private owned tools versus company secrets; local capture boundary. |
-| observer-rule.md / journal-template.md | Optional targeted observations. |
-| AUTOMATION.md / scripts/stack_kit.py | Local renderer for a later derived profile; export disabled. |
-| observer-hook.sh | Disabled legacy raw-prompt collector. |
+| `SEED.md` | Part 1. Sets up the window, the journal, the observer rule, the optional prompt log. |
+| `journal-template.md` | The journal header and the entry format your agent follows. |
+| `observer-rule.md` | The block that goes at the end of your global rules file, with start and end dates. |
+| `observer-hook.sh` | Optional Claude Code hook: appends each prompt to a local log, prints nothing, self-expires. |
+| `EXTRACT.md` | Part 2. Flow analysis, inventory, short interview, profile draft, redaction report, pull request into the private community repo, cleanup. |
+
+## What an entry looks like
+
+```
+## 2026-09-09 (Tue) · project: kappibara
+- task: rebuild onboarding; shipped 2 screens
+- prompting: 4 prompts; opened with a 12-line spec incl. acceptance criteria; plan mode: yes
+- workflow: plan > 2 builder subagents in worktrees > main-thread review > tests > commit
+- delegation: 2 subagents (Sonnet), 1 background job; kept the schema decision in main
+- review: read the diff line by line for the API change, skimmed the rest
+- verification: test suite + manual check in the simulator
+- vcs: worktree per lane, small commits, no push
+- corrections: "never use the native date picker"; rule candidate
+- tools: plan mode, worktrees, /code-review, Xcode MCP
+- notable: asked for the rule to go into CLAUDE.md right after the correction
+```
+
+Questions, or want out at any point? Tell Maria.

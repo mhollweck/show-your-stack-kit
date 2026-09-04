@@ -1,126 +1,168 @@
-# Finish the stack analysis as one document
+# Part 2 · Extract (run after your window)
 
-Help this person understand their complete development workflow, including
-personally owned unpublished tools and the small integrations that make it
-work. The deliverable is one local stack-analysis.md following DOSSIER.md.
-It will later inform a community contribution and deck. Do not flatten the
-investigation into slide labels or a product list before the mechanics are
-understood. Apply PRIVACY.md: no company/client secrets, no uploads.
+You are helping me turn my Show Your Stack observation window into my stack
+profile. Show Your Stack is an invite-only group of builders who document how
+they REALLY build with AI. Your job: analyze the journal my agent kept,
+inventory my actual setup, interview me only for what the journal cannot
+answer, and produce ONE file, stack-submission.md, that I review. Then hand
+it off.
 
-## 1. Resume the actual investigation
+The profile ends up as a pull request into Maria's private community repo
+(github.com/mhollweck/show-your-stack-community). Maria invited me as a
+collaborator; the invite is in my GitHub notifications or email. If that does
+not work out, Phase 7 hands the file to me instead.
 
-Read minimal state, approved scope, and the current working document. Use
-relevant authorized context; don't force the person to restart or repeat
-known facts. Reconcile stale memories against sources and participant
-corrections. CTX is remembered context, CFG is inspected capability, HST/OBS
-are supported events, SELF is the person's account; these are not equivalent.
+Ground rules (non-negotiable):
+0. No company secrets, ever. The company and client scope excluded in the
+   journal's Allowlist stays excluded here: never read it, never describe what
+   that code, product, or client is. Workflow patterns only.
+1. Ask before reading. List what you want to look at and wait for my OK:
+   ~/show-your-stack/ (journal.md, prompts.log, flow-analysis.md if present),
+   my global rules file, project rules files I pick, custom agents, hooks,
+   skills or commands, settings permissions, scheduled jobs, MCP server list.
+2. Never read or reproduce .env files, keys, tokens, credentials, billing
+   pages, or message history. If a config file contains a secret inline,
+   write [redacted] and note it in the redaction report.
+3. Nothing leaves this machine except the one approved file, and only in
+   Phase 7, as a pull request I can read before it opens. The journal, the
+   prompt log, and the flow analysis never leave.
+4. Raw prompts from prompts.log are evidence for numbers and patterns. Never
+   quote one in the submission unless I approve that exact quote.
 
-If the previous capture followed a policy that hid all private tooling,
-explain the correction: personally owned unpublished tools can be studied
-within approved scope. Ask only for genuinely missing scope, then follow
-SCAN.md's references to close useful gaps. Do not broaden reads or reuse old
-sharing consent. Keep sharing disabled; no GitHub identity is needed.
+Phase 0 · Evidence. Ask to read ~/show-your-stack/. If there is no journal (I
+skipped the window), say so and continue in cold mode: skip Phase 1 and ask
+every interview question in Phase 3 instead of pre-filling.
 
-When there is an observation journal, integrate the supported additions
-into the same document. End observation when the person chooses to finish
-and record the actual window. No observation is required if existing evidence
-is enough; a partial result can still be useful with explicit limitations.
+Phase 1 · Flow analysis. Write ~/show-your-stack/flow-analysis.md and show it
+to me:
+  a) By the numbers: window length, days with activity, sessions logged,
+     prompts total and per active day (from prompts.log if present), median
+     prompt length in words, share of first prompts that were a spec vs a
+     one-liner, plan mode uses, delegations (subagents, background,
+     scheduled), sessions where I reviewed the diff, verification methods
+     tally, corrections count, tools tally. Only numbers the evidence
+     supports; write "not observed" otherwise.
+  b) Patterns: 5 to 8 bullets, each with an evidence count ("asked for tests
+     before commit in 9 of 12 sessions").
+  c) Prediction vs observed: my 3 prediction lines, each paired with what
+     actually happened. Be direct; the gap is the point.
+  d) Corrections and the rules they imply, deduplicated.
+  e) Gem candidates: 3 to 5 one-liners another builder could adopt tomorrow.
+  f) Open questions: what the journal could not tell you.
 
-## 2. Pressure-test the inventory and workflow
+Phase 2 · Inventory (after my OK): read the approved files and build a factual
+map: harness(es), conventions, custom agents and what each is for, hooks and
+what they enforce, automations and schedules, MCP integrations, memory and
+context systems. Compare with the Baseline in the journal and note what
+changed during the window.
 
-Before asking the person, verify these questions against eligible evidence:
+Phase 3 · Interview. Pre-fill every answer you can from the journal and the
+analysis, show me the full set, and have me confirm or correct. Ask cold only
+the ones you cannot fill. One at a time, short answers welcome.
+  1. Walk me through a typical day of the window: first prompt to last
+     shipped thing.
+  2. Agents: what runs in parallel, in the background, on a schedule? What do
+     you delegate vs keep in the main thread?
+  3. Code review: do you review AI code at all? How: line by line, diff level,
+     vibes, AI reviews AI?
+  4. Version control: worktrees? branch discipline? how do parallel agents not
+     clobber each other?
+  5. Quality control: how do you KNOW it works before you ship?
+  6. Context and memory: how does your agent know your codebase and
+     preferences?
+  7. Spend: what do you pay monthly, and what is your model routing (cheap vs
+     expensive tiers)? Share only what you are comfortable publishing.
+  8. The failure story: worst thing an agent ever did to you, and the rule it
+     produced. (Start from the week 2 check-in if there is one.)
+  9. The gem: ONE thing you would tell every builder. (Start from the gem
+     candidates.)
+ 10. The weird thing: something in your setup you suspect nobody else does.
+ 11. The gap: which prediction vs observed pair surprised you most, and what
+     are you changing because of it?
 
-- What did this person build or adapt themselves that a public tool list
-  would miss? Include scripts, aliases, skills, hooks, local apps, MCP tools,
-  schedulers, orchestrators, and evidence/review helpers where present.
-- What invokes each material tool, what does it receive and produce, and who
-  or what consumes its result? Resolve aliases and trace important edges.
-- Which model/agent roles, routing conditions, concurrency limits, worktree
-  rules, or human gates change how the workflow behaves?
-- What happens on failure, disagreement, stale context, or a failed check?
-  Who intervenes and what can't the automation do?
-- Which tools are actually used, experimental, disabled/retired, merely
-  installed, or only recalled? Is there evidence for the stated cadence?
-- How do research, design, task tracking, and collaboration feed implementation?
-  What infrastructure, debugging, monitoring, or recovery tools close the loop?
-  Include scoped personal helpers around those stages, not just coding agents.
-- What runs outside a coding session, and how does its result return to the
-  next session? Keep sensitive business outputs out of the document.
-- What is the person's improvement loop, and which benefit claims are
-  measured, remembered, or speculative? What maintenance cost is unknown?
+Phase 4 · Draft stack-submission.md in exactly this shape:
 
-Use DOSSIER.md's coverage table to make missed surfaces visible. Recheck
-scoped hidden/ignored configuration before claiming it was not supplied;
-record uninspected separately from absent. Preserve material wrappers as
-separate tools, linked to the tools they invoke. A blank
-category means unknown or not applicable, not permission to search broadly.
-Do not claim completeness beyond the sampled sources and answered questions.
+---
+name:            # how you want to be credited
+oneLiner:        # your setup in one sentence
+tags: []         # 3-5, e.g. [Claude Code, worktrees, cron agents]
+harness:         # tools + models, and your routing logic
+agents:          # what you delegate, parallelize, schedule
+review:          # how AI code gets reviewed (or does not, and why)
+versionControl:  # branch/worktree/commit discipline with agents
+qualityControl:  # tests, checks, "how I know it works"
+contextMemory:   # rules files, docs discipline, memory systems
+spend:           # only what you are happy to publish; "prefer not" is fine
+gems: []         # 3-5 one-liners, your gem from Q9 first
+failureStory:    # the war story + the rule it produced
+weirdThing:      # from Q10
+links: {}        # site/GitHub/X, whatever you want shown
+---
 
-## 3. Ask focused, useful questions in chat
+Also add a slides: block to the frontmatter. It powers my auto-generated stage
+presentation. Rules:
+  - GRAPHICS-FIRST: as many graphics as possible; plain lines are the last
+    resort.
+  - Every slide must be understandable on its own, without me narrating, but
+    it stays a presentation, never a text wall.
+  - Every node or item is an object { label: 4 words max, sub: 8 words max of
+    context }. The label is what the audience reads first, the sub is what
+    makes it make sense.
+  - Every slide gets why: ONE line, the reason this setup choice exists.
+Types:
+  - type: flow    a pipeline: nodes: [3-5 {label, sub}]
+                  (routing, review chains, context layers)
+  - type: roster  a crew list: items: [up to 8 {label, sub, meta}] where meta
+                  is a short chip, a model or a cadence: "Sonnet", "weekly",
+                  "cron" (agents and automations)
+  - type: tiles   a wall of rule cards: items: [4-8 {label, sub}]
+                  (rules, tripwires, principles)
+  - type: lines   2-3 big punch lines: lines: [strings] (stories; last resort)
+Keys: harness, agents, review, versionControl, qualityControl, contextMemory,
+spend, failureStory, weirdThing.
+Example:
+  harness:
+    type: flow
+    why: "route by job: the expensive model only thinks"
+    nodes:
+      - { label: "Fable", sub: "plans, reviews, debugs" }
+      - { label: "Sonnet builders", sub: "execute written specs" }
 
-Show the supported interpretation first. Ask only questions that change the
-story, resolve an important connection, or explain why a practice exists.
-Small batches are fine. Use context-specific questions such as "This alias
-and task runner both invoke your evidence pack. When do you run it manually?"
-or "The scheduler writes a proposal; how do you decide to apply it?"
+Then the body, in my own voice: the guided tour of my setup, with real
+(redacted) excerpts from my configs where they earn their place, and a
+"By the numbers" block from Phase 1 (window length, sessions, prompts per
+day, review rate, and the prediction vs observed pair from Q11). Numbers make
+this profile different from a memory-based one; keep them.
 
-Invite correction: the person may explain a private tool by its behavior
-without exposing implementation. Ask whether an old tool was replaced,
-what standard approach failed, and when they bypass the custom path. Do not
-invent why a tool exists when only its code or configuration is available.
-Keep unanswered questions if the person is unavailable; do not substitute
-plausible answers. No call, recording, or questionnaire from scratch.
+Phase 5 · Redaction pass. Before showing me the final file, produce a
+REDACTION REPORT: every place you removed or generalized something (keys,
+client or employer names, private repo names, revenue, anything under NDA,
+anything outside the journal allowlist), plus anything you are UNSURE about,
+flagged for my call. Company names and numbers appear only if I typed them in
+this conversation and confirm them.
 
-## 4. Build one coherent, evidence-backed document
+Phase 6 · Show me the complete file. I approve or edit. Only then save
+stack-submission.md in ~/show-your-stack/.
 
-Consolidate everything in stack-analysis.md using the complete DOSSIER.md
-structure. Keep local scope state and optional journal separately, but do
-not hand back competing inventory/flow/profile reports. The main document
-contains the stack map, material tool cards, task walkthroughs, improvement
-loop, adoption recipes, unanswered questions, and local evidence/disclosure
-appendices. Each important claim links to evidence or is labeled self-report,
-inference, or proposed experiment.
+Phase 7 · Hand-off by pull request. Only after my Phase 6 approval.
+  a) Check access: `gh auth status`. If gh is missing or not logged in, or I
+     have not accepted Maria's invite yet, skip to the fallback.
+  b) Handle: propose my GitHub login (`gh api user --jq .login`) as <handle>;
+     I can pick another.
+  c) Clone or update the repo: `gh repo clone mhollweck/show-your-stack-community
+     ~/show-your-stack/community` (or `git -C ~/show-your-stack/community pull`).
+  d) Branch `stack/<handle>`; copy stack-submission.md to `stacks/<handle>.md`
+     in the clone (this ONE file, nothing else from ~/show-your-stack/);
+     commit "Stack: <name>"; push the branch.
+  e) Show me the PR title and body before creating it: title "Stack: <name>",
+     body = my oneLiner plus "Author-approved profile from the Show Your Stack
+     kit." Then `gh pr create`. Tell me the PR URL. Maria's merge makes it
+     visible to the members of the private repo; nothing is public.
+  Fallback: if any step fails, keep stack-submission.md local and tell me to
+  send it to Maria directly. Never push anywhere except that repo and branch,
+  never add any other file, never force-push.
 
-Depth means specific mechanisms and tradeoffs. "A task wrapper creates one
-worktree per task, caps concurrency, stops on a failed acceptance check, and
-hands evidence to a human before merge" is useful. "Uses agents and Git" is
-not enough. Do not invent those mechanics unless supported for this person.
-
-Preserve useful privately built tool names locally if allowed. Use aliases
-in candidate public/member-facing prose when needed. Local-only paths,
-implementation references, and exact personal interfaces stay in the labeled
-appendix; company secrets and credentials never enter any section. Names can
-be removed without losing the trigger/input/output/failure/human-control story.
-
-## 5. Review for understanding before polishing assets
-
-Walk through the draft with the person: material tools and how they connect,
-one representative task, what is distinctive/reusable, and the open questions.
-Ask whether an important unpublished helper or manual step is missing. Verify
-that the document distinguishes current practice from past/experimental work,
-and observed outcomes from requested behavior and self-reported benefit.
-
-Update the same file with corrections. Review proposed share candidates
-separately from the local-only evidence appendix. No rendering, spending,
-stack changes, or external publication is needed for this review.
-
-## 6. Finish locally, with a clear next artifact
-
-Save final stack-analysis.md and phase complete-local. Report the local link,
-what the document covers, the significant unknowns, and its source limitations.
-No account lookup, fork, PR, upload, email/DM, or community import occurs.
-Old RETURN_REPO, consent, approve/submit commands, or transport state do not
-permit transmission. Do not forward capture evidence for troubleshooting.
-
-The document's candidate community story and deck outline are preparation,
-not published assets. If the person later asks to create those assets, derive
-them from the reviewed sections and selected claims, excluding the private
-appendices. The existing renderer can be used on a derived compatible profile
-at that later stage; do not force its nine-section schema onto this analysis.
-Present any derived asset locally for review. The person need not repeat the
-investigation, and no sharing happens automatically.
-
-Offer to remove only this capture's observer block with the participant's
-configuration approval, preserving unrelated instructions. Capture-file
-retention is the person's choice. Do not erase original projects/history or
-claim that local deletion removes prior provider processing or old copies.
+Phase 8 · Cleanup (ask first). Offer to remove the observer block (between the
+show-your-stack:observer markers) from my rules file and the observer hook
+from ~/.claude/settings.json. Keep ~/show-your-stack/ as it is: the journal
+and the analysis are mine.
