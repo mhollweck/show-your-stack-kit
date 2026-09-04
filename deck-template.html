@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Show Your Stack</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+/* Show Your Stack - offline deck renderer. Tokens + component styles
+   ported from show-your-stack/site/app/globals.css (D1 Screenshare).
+   Single theme, dark, explicit backgrounds throughout. */
+:root {
+  --bg:#101014; --surface:#17171c; --chrome:#1d1d24; --border:#2a2a33;
+  --text:#e9e9ee; --muted:#8f8f9b; --green:#6ee787; --amber:#f2cc60;
+  --red:#ff5f57; --yellow:#febc2e; --tlgreen:#28c840;
+  --font-mono:"JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  --font-sans:"Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+*,*::before,*::after{box-sizing:border-box}
+html,body{height:100%;margin:0}
+h1,h2,p,ul,li{margin:0}
+ul{padding:0;list-style:none}
+a{color:inherit;text-decoration:none}
+svg{display:block}
+body{
+  background-color:var(--bg);
+  background-image:repeating-linear-gradient(0deg,rgba(255,255,255,.025) 0 1px,transparent 1px 32px),
+    repeating-linear-gradient(90deg,rgba(255,255,255,.025) 0 1px,transparent 1px 32px),
+    radial-gradient(600px 400px at 50% 0%,rgba(110,231,135,.06),transparent 70%);
+  color:var(--text);font-family:var(--font-sans);-webkit-font-smoothing:antialiased;
+  overflow:hidden;display:flex;align-items:center;justify-content:center;
+}
+/* stage: a 16:9 box that always fits the viewport, never overflows it */
+#stage{position:relative;width:min(100vw,177.78vh);height:min(100vh,56.25vw);overflow:hidden}
+.talk-progress{position:fixed;top:0;left:0;height:3px;background:var(--green);z-index:60;transition:width .25s ease}
+.talk-counter{position:fixed;bottom:20px;right:24px;z-index:60;font-family:var(--font-mono);font-size:12px;color:var(--muted)}
+.talk-slide{position:absolute;inset:0;display:none;align-items:safe center;justify-content:center;padding:48px;overflow-y:auto;overflow-x:hidden}
+.talk-slide.active{display:flex}
+
+/* window chrome */
+.window{width:100%;max-width:880px;margin:0 auto;border-radius:12px;border:1px solid var(--border);box-shadow:0 30px 80px rgba(0,0,0,.5);overflow:hidden;background:var(--surface)}
+.chrome{height:40px;background:var(--chrome);display:flex;align-items:center;padding:0 16px;position:relative}
+.traffic-lights{display:flex;gap:8px;position:relative;z-index:1}
+.traffic-dot{width:12px;height:12px;border-radius:50%;display:inline-block}
+.traffic-dot.red{background:var(--red)} .traffic-dot.amber{background:var(--yellow)} .traffic-dot.green{background:var(--tlgreen)}
+.chrome-title{position:absolute;left:0;right:0;text-align:center;font-family:var(--font-mono);font-size:12px;color:var(--muted);pointer-events:none}
+.window-body{padding:64px 48px;text-align:center}
+
+/* title slide */
+.eyebrow{font-family:var(--font-mono);font-size:12px;letter-spacing:.18em;color:var(--amber);margin:0 0 24px}
+.hero-h1{font-family:var(--font-mono);font-weight:600;font-size:clamp(40px,5.5vw,64px);color:var(--text);margin:0 0 24px;line-height:1.1;overflow-wrap:break-word}
+.hero-sub{font-family:var(--font-sans);font-size:18px;color:var(--muted);max-width:54ch;margin:0 auto 32px;line-height:1.6}
+.tags{display:flex;gap:6px;flex-wrap:wrap;justify-content:center}
+.tag{font-family:var(--font-mono);font-size:11px;color:var(--green);border:1px solid var(--border);border-radius:999px;padding:4px 10px;display:inline-block}
+.talk-title-tags{margin-top:24px}
+
+/* section slides */
+.talk-h2{font-family:var(--font-mono);font-weight:600;font-size:20px;color:var(--text);margin:0 0 32px}
+.talk-why{margin-top:32px;text-align:center;font-family:var(--font-mono);font-size:13.5px;color:var(--amber)}
+.talk-why::before{content:"";display:inline-block;width:20px;height:1px;background:var(--amber);opacity:.7;vertical-align:middle;margin-right:10px}
+
+/* flow */
+.talk-flow{display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:16px}
+.talk-flow-pair{display:inline-flex;align-items:center;gap:14px}
+.talk-flow-node{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:14px 18px;min-width:132px;max-width:200px;text-align:center}
+.talk-flow-node-label{font-family:var(--font-sans);font-weight:600;font-size:clamp(17px,1.6vw,21px);color:var(--text);overflow-wrap:break-word}
+.talk-flow-node-sub{font-family:var(--font-sans);font-size:12.5px;color:var(--muted);margin-top:4px}
+.talk-flow-arrow{color:var(--green);flex-shrink:0}
+
+/* roster */
+.talk-roster{display:flex;flex-direction:column;max-width:680px;width:100%;margin:0 auto}
+.talk-roster-row{display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:16px;padding:14px 4px;border-bottom:1px solid var(--border)}
+.talk-roster-row:last-child{border-bottom:none}
+.talk-roster-name{font-family:var(--font-mono);font-size:15px;color:var(--green);white-space:nowrap}
+.talk-roster-sub{font-family:var(--font-sans);font-size:15px;color:var(--muted);text-align:left}
+.talk-roster-meta{border:1px solid var(--border);border-radius:999px;padding:4px 12px;font-family:var(--font-mono);font-size:11px;color:var(--amber);letter-spacing:.06em;white-space:nowrap}
+@media (max-width:640px){
+  .talk-roster-row{grid-template-columns:auto auto;grid-template-areas:"name meta" "sub sub";row-gap:6px}
+  .talk-roster-name{grid-area:name} .talk-roster-meta{grid-area:meta;justify-self:end} .talk-roster-sub{grid-area:sub}
+  .talk-tiles{grid-template-columns:1fr}
+}
+
+/* tiles */
+.talk-tiles{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;max-width:720px;margin:0 auto}
+.talk-tile{background:var(--surface);border:1px solid var(--border);border-left:4px solid var(--green);border-radius:10px;padding:16px 20px;text-align:left}
+.talk-tile-label{font-family:var(--font-sans);font-weight:600;font-size:clamp(15px,1.4vw,18px);color:var(--text);overflow-wrap:break-word}
+.talk-tile-sub{font-family:var(--font-sans);font-size:12.5px;color:var(--muted);margin-top:5px}
+
+/* lines */
+.talk-lines{display:flex;flex-direction:column;gap:14px;align-items:center;text-align:center}
+.talk-line{font-family:var(--font-sans);font-weight:700;font-size:clamp(28px,3.6vw,44px);line-height:1.18;color:var(--text);overflow-wrap:break-word}
+
+/* gems */
+.gems-list{display:flex;flex-direction:column;gap:10px}
+.gems-item{position:relative;padding-left:20px;font-size:15px;color:var(--text);line-height:1.6}
+.gems-item::before{content:"";position:absolute;left:0;top:8px;width:6px;height:6px;border-radius:50%;background:var(--green)}
+.talk-gems--stage{text-align:left;max-width:60ch;margin:0 auto}
+.talk-gems--stage .gems-item{font-family:var(--font-sans);font-weight:600;font-size:clamp(18px,2vw,24px);line-height:1.45;margin-bottom:16px}
+
+/* closing */
+.ctas{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+.btn-secondary{background:transparent;border:1px solid var(--border);color:var(--text);font-family:var(--font-mono);font-size:14px;padding:12px 22px;border-radius:8px;display:inline-flex;align-items:center;gap:8px;transition:border-color .15s ease,background .15s ease}
+.btn-secondary:hover{border-color:var(--green);background:rgba(110,231,135,.07)}
+.talk-closing{font-family:var(--font-mono);font-size:13px;color:var(--muted);margin-top:36px}
+
+@media (max-width:700px){ .talk-slide{padding:24px} .window-body{padding:40px 24px} }
+@media (prefers-reduced-motion:reduce){ .talk-progress{transition:none} .btn-secondary{transition:none} }
+</style>
+</head>
+<body>
+<div class="talk-progress" id="progress"></div>
+<span class="talk-counter" id="counter"></span>
+<div id="stage"></div>
+
+<script id="stack-data" type="application/json">{{STACK_JSON}}</script>
+<!-- The block above is the only thing a member's agent edits: replace
+     {{STACK_JSON}} with the profile frontmatter as JSON. If that JSON
+     could contain the literal text "</script", escape the "/" as "\/"
+     first so the tag does not close early. -->
+<script>
+(function () {
+  "use strict";
+
+  var SECTIONS = [
+    { key: "harness", label: "Setup", chromeTitle: "setup · the stack" },
+    { key: "agents", label: "Agents", chromeTitle: "agents · who does what" },
+    { key: "review", label: "Review", chromeTitle: "review · trust but verify" },
+    { key: "versionControl", label: "Version control", chromeTitle: "version control · the rules" },
+    { key: "qualityControl", label: "Quality control", chromeTitle: "quality · the tripwires" },
+    { key: "contextMemory", label: "Context & memory", chromeTitle: "context · what the agent knows" },
+    { key: "spend", label: "Spend", chromeTitle: "spend · where the money goes" }
+  ];
+
+  function isText(v) { return typeof v === "string" && v.trim().length > 0; }
+  function firstSentence(text) {
+    var match = text.match(/[^.!?]*[.!?]/);
+    return (match ? match[0] : text).trim();
+  }
+  function clampText(text, max) {
+    if (text.length <= max) return text;
+    return text.slice(0, max - 1).trimEnd() + "...";
+  }
+  function fallbackSpec(text) { return { type: "lines", lines: [clampText(firstSentence(text), 90)] }; }
+
+  function parseItem(value) {
+    if (isText(value)) return { label: value };
+    if (value && typeof value === "object" && isText(value.label)) {
+      return { label: value.label, sub: isText(value.sub) ? value.sub : undefined, meta: isText(value.meta) ? value.meta : undefined };
+    }
+    return null;
+  }
+  function parseItems(arr) {
+    if (!Array.isArray(arr)) return [];
+    var out = [];
+    for (var i = 0; i < arr.length; i++) { var item = parseItem(arr[i]); if (item) out.push(item); }
+    return out;
+  }
+  function parseSpec(raw) {
+    if (!raw || typeof raw !== "object") return null;
+    var why = isText(raw.why) ? raw.why : undefined;
+    if (raw.type === "flow") { var n = parseItems(raw.nodes); return n.length ? { type: "flow", nodes: n, why: why } : null; }
+    if (raw.type === "roster") { var r = parseItems(raw.items); return r.length ? { type: "roster", items: r, why: why } : null; }
+    if (raw.type === "tiles") { var t = parseItems(raw.items); return t.length ? { type: "tiles", items: t, why: why } : null; }
+    if (raw.type === "lines") { var l = Array.isArray(raw.lines) ? raw.lines.filter(isText) : []; return l.length ? { type: "lines", lines: l, why: why } : null; }
+    return null;
+  }
+
+  function buildSlides(data) {
+    var slides = [{ kind: "title" }];
+    var specs = (data.slides && typeof data.slides === "object") ? data.slides : {};
+
+    for (var i = 0; i < SECTIONS.length; i++) {
+      var s = SECTIONS[i];
+      if (!isText(data[s.key])) continue;
+      var spec = parseSpec(specs[s.key]) || fallbackSpec(data[s.key]);
+      slides.push({ kind: "section", label: s.label, chromeTitle: s.chromeTitle, spec: spec });
+    }
+
+    var gems = Array.isArray(data.gems) ? data.gems.filter(isText) : [];
+    if (gems.length) slides.push({ kind: "gems", gems: gems });
+
+    if (isText(data.failureStory)) {
+      slides.push({ kind: "section", label: "Failure story", chromeTitle: "failure story · the scar tissue",
+        spec: parseSpec(specs.failureStory) || fallbackSpec(data.failureStory) });
+    }
+    if (isText(data.weirdThing)) {
+      slides.push({ kind: "section", label: "The weird thing", chromeTitle: "the weird thing",
+        spec: parseSpec(specs.weirdThing) || fallbackSpec(data.weirdThing) });
+    }
+
+    var links = [];
+    if (data.links && typeof data.links === "object") {
+      for (var key in data.links) {
+        if (Object.prototype.hasOwnProperty.call(data.links, key) && isText(data.links[key])) links.push([key, data.links[key]]);
+      }
+    }
+    slides.push({ kind: "closing", links: links });
+    return slides;
+  }
+
+  function el(tag, className, text) {
+    var node = document.createElement(tag);
+    if (className) node.className = className;
+    if (text !== undefined) node.textContent = text;
+    return node;
+  }
+  function flowArrow() {
+    var ns = "http://www.w3.org/2000/svg";
+    var svg = document.createElementNS(ns, "svg");
+    svg.setAttribute("class", "talk-flow-arrow"); svg.setAttribute("viewBox", "0 0 22 22");
+    svg.setAttribute("width", "22"); svg.setAttribute("height", "22");
+    svg.setAttribute("fill", "none"); svg.setAttribute("aria-hidden", "true");
+    var path = document.createElementNS(ns, "path");
+    path.setAttribute("d", "M9 6l6 6-6 6"); path.setAttribute("stroke", "currentColor");
+    path.setAttribute("stroke-width", "2.5"); path.setAttribute("stroke-linecap", "round"); path.setAttribute("stroke-linejoin", "round");
+    svg.appendChild(path);
+    return svg;
+  }
+  function renderFlow(spec) {
+    var wrap = el("div", "talk-flow");
+    spec.nodes.forEach(function (node, i) {
+      var pair = el("div", "talk-flow-pair");
+      if (i > 0) pair.appendChild(flowArrow());
+      var nodeEl = el("div", "talk-flow-node");
+      nodeEl.appendChild(el("div", "talk-flow-node-label", node.label));
+      if (node.sub) nodeEl.appendChild(el("div", "talk-flow-node-sub", node.sub));
+      pair.appendChild(nodeEl);
+      wrap.appendChild(pair);
+    });
+    return wrap;
+  }
+  function renderRoster(spec) {
+    var wrap = el("div", "talk-roster");
+    spec.items.forEach(function (item) {
+      var row = el("div", "talk-roster-row");
+      row.appendChild(el("span", "talk-roster-name", item.label));
+      row.appendChild(el("span", "talk-roster-sub", item.sub || ""));
+      if (item.meta) row.appendChild(el("span", "talk-roster-meta", item.meta));
+      wrap.appendChild(row);
+    });
+    return wrap;
+  }
+  function renderTiles(spec) {
+    var wrap = el("div", "talk-tiles");
+    spec.items.forEach(function (item) {
+      var tile = el("div", "talk-tile");
+      tile.appendChild(el("div", "talk-tile-label", item.label));
+      if (item.sub) tile.appendChild(el("div", "talk-tile-sub", item.sub));
+      wrap.appendChild(tile);
+    });
+    return wrap;
+  }
+  function renderLines(spec) {
+    var wrap = el("div", "talk-lines");
+    spec.lines.slice(0, 3).forEach(function (line) { wrap.appendChild(el("p", "talk-line", line)); });
+    return wrap;
+  }
+  function renderSpec(spec) {
+    if (spec.type === "flow") return renderFlow(spec);
+    if (spec.type === "roster") return renderRoster(spec);
+    if (spec.type === "tiles") return renderTiles(spec);
+    return renderLines(spec);
+  }
+  function trafficLights() {
+    var wrap = el("div", "traffic-lights");
+    ["red", "amber", "green"].forEach(function (c) { wrap.appendChild(el("span", "traffic-dot " + c)); });
+    return wrap;
+  }
+  function windowEl(chromeTitle, children) {
+    var win = el("div", "window");
+    var chrome = el("div", "chrome");
+    chrome.appendChild(trafficLights());
+    chrome.appendChild(el("span", "chrome-title", chromeTitle));
+    win.appendChild(chrome);
+    var body = el("div", "window-body");
+    children.forEach(function (c) { body.appendChild(c); });
+    win.appendChild(body);
+    return win;
+  }
+
+  function renderSlideContent(slide, data) {
+    if (slide.kind === "title") {
+      var children = [el("p", "eyebrow", "SHOW YOUR STACK · LIVE"), el("h1", "hero-h1", data.name || ""), el("p", "hero-sub", data.oneLiner || "")];
+      var tags = Array.isArray(data.tags) ? data.tags.filter(isText) : [];
+      if (tags.length) {
+        var tagsWrap = el("div", "tags talk-title-tags");
+        tags.forEach(function (t) { tagsWrap.appendChild(el("span", "tag", t)); });
+        children.push(tagsWrap);
+      }
+      return windowEl("show your stack · live", children);
+    }
+    if (slide.kind === "section") {
+      var sc = [el("h2", "talk-h2", slide.label), renderSpec(slide.spec)];
+      if (slide.spec.why) sc.push(el("p", "talk-why", slide.spec.why));
+      return windowEl(slide.chromeTitle, sc);
+    }
+    if (slide.kind === "gems") {
+      var ul = el("ul", "gems-list talk-gems--stage");
+      slide.gems.forEach(function (gem) { ul.appendChild(el("li", "gems-item", gem)); });
+      return windowEl("the gems", [el("h2", "talk-h2", "The gems"), ul]);
+    }
+    var cc = [];
+    if (slide.links.length) {
+      cc.push(el("h2", "talk-h2", "Find me"));
+      var ctas = el("div", "ctas");
+      slide.links.forEach(function (pair) {
+        var a = el("a", "btn-secondary", pair[0]);
+        a.href = pair[1]; a.target = "_blank"; a.rel = "noreferrer";
+        ctas.appendChild(a);
+      });
+      cc.push(ctas);
+    }
+    cc.push(el("p", "talk-closing", "show your stack."));
+    return windowEl("show your stack", cc);
+  }
+
+  var slides = [], current = 0, stageEl, counterEl, progressEl;
+
+  function clampIndex(n) { return Math.max(0, Math.min(slides.length - 1, n)); }
+  function goTo(index, replace) {
+    current = clampIndex(index);
+    var els = stageEl.querySelectorAll(".talk-slide");
+    for (var i = 0; i < els.length; i++) els[i].classList.toggle("active", i === current);
+    counterEl.textContent = (current + 1) + " / " + slides.length;
+    progressEl.style.width = (((current + 1) / slides.length) * 100) + "%";
+    var newHash = "#" + (current + 1);
+    if (replace) history.replaceState(null, "", newHash);
+    else if (location.hash !== newHash) history.pushState(null, "", newHash);
+  }
+  function move(delta) { goTo(current + delta); }
+  function initialIndex() {
+    var n = parseInt(location.hash.slice(1), 10);
+    return Number.isFinite(n) ? clampIndex(n - 1) : 0;
+  }
+  function render(data) {
+    slides = buildSlides(data);
+    stageEl.innerHTML = "";
+    slides.forEach(function (slide) {
+      var div = el("div", "talk-slide");
+      div.appendChild(renderSlideContent(slide, data));
+      stageEl.appendChild(div);
+    });
+    goTo(initialIndex(), true);
+  }
+
+  function init() {
+    stageEl = document.getElementById("stage");
+    counterEl = document.getElementById("counter");
+    progressEl = document.getElementById("progress");
+
+    var raw = document.getElementById("stack-data").textContent;
+    var data;
+    try { data = JSON.parse(raw); } catch (e) { data = { name: "Untitled stack", oneLiner: "This deck has no data yet." }; }
+
+    document.title = isText(data.name) ? data.name + " · Show Your Stack" : "Show Your Stack";
+    render(data);
+
+    window.addEventListener("keydown", function (e) {
+      if (e.key === "ArrowRight" || e.key === "ArrowDown" || e.key === "PageDown" || e.key === " ") { e.preventDefault(); move(1); }
+      else if (e.key === "ArrowLeft" || e.key === "ArrowUp" || e.key === "PageUp") { e.preventDefault(); move(-1); }
+      else if (e.key === "Home") { e.preventDefault(); goTo(0); }
+      else if (e.key === "End") { e.preventDefault(); goTo(slides.length - 1); }
+    });
+    stageEl.addEventListener("click", function (e) {
+      if (e.target.closest("a, button")) return;
+      var rect = stageEl.getBoundingClientRect();
+      var x = e.clientX - rect.left;
+      move(x < rect.width / 2 ? -1 : 1);
+    });
+    window.addEventListener("hashchange", function () { goTo(initialIndex(), true); });
+  }
+
+  document.addEventListener("DOMContentLoaded", init);
+})();
+</script>
+</body>
+</html>

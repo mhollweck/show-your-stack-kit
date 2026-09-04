@@ -38,8 +38,9 @@ Ground rules (non-negotiable):
    described, at most, as "client work exists, excluded": never by path or
    folder name, in any output.
 
-Phase 0 · Evidence. Ask to read ~/show-your-stack/. If there is no journal (I
-skipped the window), say so and continue in cold mode: skip Phase 1 and ask
+Phase 0 · Evidence. Ask to read ~/show-your-stack/: journal.md, prompts.log,
+and the Part 1 draft stack-submission.md if it exists. If there is no journal
+(I skipped the window), say so and continue in cold mode: skip Phase 1 and ask
 every interview question in Phase 3 instead of pre-filling.
 
 Phase 1 · Flow analysis. Compute everything first, show nothing yet. Then the
@@ -73,40 +74,12 @@ context systems, and the unpublished tools I built for myself (scripts,
 aliases, internal apps, glue). My own private tools are in scope with my OK;
 company and client material never is.
 
-Follow the connections; the interesting tools are reached indirectly:
-  - shell rc files and aliases: the script or binary each one calls
-  - package.json, Makefile, task-runner scripts: name each script and the tool
-    it calls (a script that wraps one of my own tools is a link worth showing)
-  - scheduler definitions (launchd plists, crontab, systemd): the script they
-    run, its flags, its cadence
-  - CI workflows under .github/ and other hidden folders: what actually runs on
-    push or pull request, and what stays a manual step
-  - agent memory and notes: leads, not facts. Verify against files and
-    sessions. Where memory contradicts the evidence, report the contradiction
-    as a finding and never repeat the memory as current.
-  - documentation claims ("CI runs the full suite"): find the mechanism that
-    would enforce the claim. A claim without a mechanism is a finding.
-Merge a true alias into the tool it calls. Keep a wrapper that adds behavior
-(extra steps, flags, a different output) as its own tool, linked to what it
-wraps.
+Follow INVENTORY.md (in this kit) for the procedure: follow the connections,
+label statuses, keep tool cards, record findings. Then diff against the Part 1
+draft in stack-submission.md and the Baseline in the journal: what appeared,
+changed, or retired during the window is itself a finding.
 
-Give every material tool one status and use it in the profile: installed,
-configured, recalled (memory only), observed (seen in sessions or the
-journal), self-reported, experimental, retired. Installed-but-unused is a
-finding, not a stack component.
 
-For each material tool or practice, keep a short tool card in your notes, as
-far as the evidence supports it: the problem it solves; what starts it and
-when; what it takes in, decides, produces, hands off; the exact rule, flag or
-config that changes the workflow (approval lists, limits, retries); what stays
-manual; what needs approval and what enforces it; what happens on failure or
-stale state; when it is bypassed; what it replaced; what it costs to maintain;
-whether the benefit is measured, reported, or a guess. When a tool's own
-comments say what it does NOT do or prove, keep that. Cards feed the body; do
-not paste them raw.
-
-Compare with the Baseline in the journal and note what changed during the
-window.
 
 Phase 3 · Interview. Pre-fill every answer you can from the journal and the
 analysis, show me the full set, and have me confirm or correct. Ask cold only
@@ -134,7 +107,8 @@ questions. Never fill an answer from imagination or from what seems typical.
  11. The gap: which guess was furthest from the real number, and what are
      you changing because of it?
 
-Phase 4 · Draft stack-submission.md in exactly this shape. Two separate
+Phase 4 · Rewrite stack-submission.md in place: the Part 1 draft becomes the
+final profile, in exactly this shape. Two separate
 things live in the frontmatter: PROSE fields (plain strings, 2 to 6
 sentences each, in my voice) and, after them, ONE slides: block that holds
 the stage graphics. Never put a slide spec into a prose field.
@@ -227,7 +201,10 @@ flagged for my call. Company names and numbers appear only if I typed them in
 this conversation and confirm them.
 
 Phase 6 · Show me the complete file. I approve or edit. Only then save
-stack-submission.md in ~/show-your-stack/.
+stack-submission.md in ~/show-your-stack/ and regenerate the deck: copy
+deck-template.html from this kit to ~/show-your-stack/deck.html and replace
+the placeholder {{STACK_JSON}} with the frontmatter as JSON (escape any
+"</script" inside strings). Tell me to open it: that is my talk, ready.
 
 Phase 7 · Hand-off by pull request. Only after my Phase 6 approval.
   a) Check access: `gh auth status`. If gh is missing or not logged in, or I

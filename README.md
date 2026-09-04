@@ -16,7 +16,7 @@ records how you work (prompting, delegation, review, verification), never
 what the code, product, or client is. Your agent asks you to mark that scope
 before it reads a single file.
 
-## Start (10 minutes, today)
+## Start (today; 20 to 30 minutes, mostly your agent working)
 
 Open a fresh Claude Code session in your home directory and paste:
 
@@ -34,6 +34,10 @@ Your side is tiny: pick a window (1 week, 2 weeks, or custom), tick which of
 your folders are company or client work (excluded from every read) and which
 personal projects may be named, and say OK to a names-only baseline of your
 setup. No writing about how you work; that is what the window is for. Then it
+does the deep dive (your agents, hooks, skills, schedules, shell aliases, the
+scripts and tools you built for yourself, with the status of each), writes a
+first draft of your profile to `~/show-your-stack/stack-submission.md`, renders
+your presentation to `~/show-your-stack/deck.html` (open it, arrow keys), then
 installs a small observer rule (and, if you say yes, a local prompt log) and
 gets out of the way. Last thing it asks: send Maria your GitHub login, so she
 can add you to the private community repo before Part 2.
@@ -59,8 +63,8 @@ leaves this machine except the one file I approve.
 
 Your agent analyzes the journal (real numbers: prompts per day, review rate,
 what you delegated), asks you to guess three of those numbers before showing
-them, interviews you only for the gaps, drafts your profile with a slide spec for your stage talk, and
-shows you a redaction report. You approve the file, then your agent opens a
+them, interviews you only for the gaps, rewrites the day-one draft into your
+final profile, regenerates the deck, and shows you a redaction report. You approve the file, then your agent opens a
 pull request with that one file into Maria's private community repo
 (`mhollweck/show-your-stack-community`). You need a GitHub account with the
 `gh` CLI logged in, and Maria's collaborator invite accepted; if that fails,
@@ -88,11 +92,13 @@ No calls, no forms, no uploads: the kit is the whole process. Your profile never
 
 | File | What it is |
 |---|---|
-| `SEED.md` | Part 1. Sets up the window, the journal, the observer rule, the optional prompt log. |
+| `SEED.md` | Part 1. Window, scope tick list, deep dive, day-one draft + deck, journal, observer rule, optional prompt log. |
+| `INVENTORY.md` | How your agent maps your setup: follow the connections, label statuses, keep tool cards, record findings. Used by both parts. |
+| `deck-template.html` | Your presentation, rendered locally from the profile. Open `~/show-your-stack/deck.html`, arrow keys. |
 | `journal-template.md` | The journal header and the entry format your agent follows. |
 | `observer-rule.md` | The block that goes at the end of your global rules file, with start and end dates. |
 | `observer-hook.sh` | Optional Claude Code hook: appends each prompt to a local log, prints nothing, self-expires. |
-| `EXTRACT.md` | Part 2. Flow analysis, inventory, short interview, profile draft, redaction report, pull request into the private community repo, cleanup. |
+| `EXTRACT.md` | Part 2. Guess-then-reveal flow analysis, inventory diff, short interview, final profile, deck, redaction report, pull request into the private community repo, cleanup. |
 
 ## What an entry looks like
 

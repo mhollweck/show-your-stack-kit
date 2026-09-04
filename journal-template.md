@@ -2,6 +2,7 @@
 window: START to END (N days)
 reminded: no
 kit: https://github.com/mhollweck/show-your-stack-kit (Part 2 is EXTRACT.md, run it after END)
+profile draft: ~/show-your-stack/stack-submission.md (v0 from Part 1, final after Part 2) · deck: ~/show-your-stack/deck.html
 
 ## How to log (for my agent)
 Once per session, right after the first task is done, append ONE entry below.
