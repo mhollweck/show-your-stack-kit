@@ -49,14 +49,16 @@ else is logged as "a private project". Ask if there are people, companies, or
 repos that must never appear at all. Write all of this into the Allowlist
 section of the journal.
 
-Step 4 · Baseline (ask first). Propose a light inventory of MY OWN setup
-(never a company machine's managed config) and wait for my OK:
+Step 4 · Baseline (ask first). If you already know my setup, pre-fill this
+and have me confirm instead of asking cold. Propose a light inventory of MY
+OWN setup (never a company machine's managed config) and wait for my OK:
 which harness(es) I use, the size of my global rules file (line count, not
 contents), and the NAMES of my custom agents, hooks, skills or commands, MCP
 servers, scheduled jobs, and the unpublished tools I built for myself
-(scripts, aliases, internal apps, glue). My own private tools are not company
-secrets; they are often the best part of a stack. Names and counts only. This
-is the "before" snapshot.
+(scripts, aliases, internal apps, glue), plus WHERE these live (rc file,
+tooling folder, schedules folder, project folders) so Part 2 knows where to
+look without asking again. Names, counts and locations only, no contents.
+This is the "before" snapshot.
 
 Step 5 · Journal. Fetch journal-template.md. Create ~/show-your-stack/journal.md
 from it: replace START, END and N in the header, keep "How to log" exactly as

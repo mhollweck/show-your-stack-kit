@@ -106,6 +106,7 @@ No calls, no forms, no uploads: the kit is the whole process. Your profile never
 - vcs: worktree per lane, small commits, no push
 - corrections: "never use the native date picker"; rule candidate
 - tools: plan mode, worktrees, /code-review, Xcode MCP
+- manual: tested the two screens by hand in the simulator
 - notable: asked for the rule to go into CLAUDE.md right after the correction
 ```
 

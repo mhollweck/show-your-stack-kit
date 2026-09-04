@@ -6,7 +6,7 @@ kit: https://github.com/mhollweck/show-your-stack-kit (Part 2 is EXTRACT.md, run
 ## How to log (for my agent)
 Once per session, right after the first task is done, append ONE entry below.
 Add a line to it later in the session only if something notable happens (a
-correction, a delegation, a review, a failure). Ten lines max. Patterns and
+correction, a delegation, a review, a failure). Eleven lines max. Patterns and
 paraphrases, never code or secrets. Log without commentary: do not announce
 entries, do not ask about the journal.
 
@@ -24,6 +24,8 @@ Entry format:
 - corrections: what I pushed back on, quoted short, and the rule it implies
 - tools: plan mode, skills or commands, MCP servers, hooks, worktrees, model
   switches
+- manual: what I did by hand outside the agent (testing in the app, design,
+  deploy click, coordinating with people)
 - notable: anything surprising, or a gem candidate
 
 Check-ins: on the first session on or after day 7, ask me ONE question and log
