@@ -30,13 +30,13 @@ leaves this machine.
 Works with Cursor, Codex and Gemini CLI too. SEED.md tells your agent where
 its rules file lives.
 
-Your agent will ask you five things: how long the window should be (1 week,
-2 weeks, or custom), your own 3-line prediction of your workflow, which
-folders are company or client work (excluded from every read), which personal
-project names may appear in the journal, and an OK for a names-only baseline
-of your setup. Then it installs a small observer rule (and, if you say yes, a
-local prompt log) and gets out of the way. Last thing it asks: send Maria your
-GitHub login, so she can add you to the private community repo before Part 2.
+Your side is tiny: pick a window (1 week, 2 weeks, or custom), tick which of
+your folders are company or client work (excluded from every read) and which
+personal projects may be named, and say OK to a names-only baseline of your
+setup. No writing about how you work; that is what the window is for. Then it
+installs a small observer rule (and, if you say yes, a local prompt log) and
+gets out of the way. Last thing it asks: send Maria your GitHub login, so she
+can add you to the private community repo before Part 2.
 
 ## The window (1 to 2 weeks, 0 minutes)
 
@@ -58,8 +58,8 @@ leaves this machine except the one file I approve.
 ```
 
 Your agent analyzes the journal (real numbers: prompts per day, review rate,
-what you delegated), compares it with your prediction, interviews you only
-for the gaps, drafts your profile with a slide spec for your stage talk, and
+what you delegated), asks you to guess three of those numbers before showing
+them, interviews you only for the gaps, drafts your profile with a slide spec for your stage talk, and
 shows you a redaction report. You approve the file, then your agent opens a
 pull request with that one file into Maria's private community repo
 (`mhollweck/show-your-stack-community`). You need a GitHub account with the

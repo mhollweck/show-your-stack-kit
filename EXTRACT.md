@@ -42,8 +42,13 @@ Phase 0 · Evidence. Ask to read ~/show-your-stack/. If there is no journal (I
 skipped the window), say so and continue in cold mode: skip Phase 1 and ask
 every interview question in Phase 3 instead of pre-filling.
 
-Phase 1 · Flow analysis. Write ~/show-your-stack/flow-analysis.md and show it
-to me:
+Phase 1 · Flow analysis. Compute everything first, show nothing yet. Then the
+guess: ask me, in ONE message, to guess three numbers about my own window
+before I see them, e.g. in how many of my sessions did I open with a spec,
+how many did I delegate to a subagent, how many ran tests before commit (pick
+the three that matter most for this journal). Record my guesses. If the
+journal has an older "Prediction" section instead, use that. Then write
+~/show-your-stack/flow-analysis.md and show it to me:
   a) By the numbers: window length, days with activity, sessions logged,
      prompts total and per active day (from prompts.log if present), median
      prompt length in words, share of first prompts that were a spec vs a
@@ -53,8 +58,8 @@ to me:
      supports; write "not observed" otherwise.
   b) Patterns: 5 to 8 bullets, each with an evidence count ("asked for tests
      before commit in 9 of 12 sessions").
-  c) Prediction vs observed: my 3 prediction lines, each paired with what
-     actually happened. Be direct; the gap is the point.
+  c) Guess vs observed: my three guesses, each next to the real count. Be
+     direct; the gap is the point, and it is the part people remember.
   d) Corrections and the rules they imply, deduplicated.
   e) Gem candidates: 3 to 5 one-liners another builder could adopt tomorrow.
   f) Open questions: what the journal could not tell you.
@@ -126,8 +131,8 @@ questions. Never fill an answer from imagination or from what seems typical.
   9. The gem: ONE thing you would tell every builder. (Start from the gem
      candidates.)
  10. The weird thing: something in your setup you suspect nobody else does.
- 11. The gap: which prediction vs observed pair surprised you most, and what
-     are you changing because of it?
+ 11. The gap: which guess was furthest from the real number, and what are
+     you changing because of it?
 
 Phase 4 · Draft stack-submission.md in exactly this shape. Two separate
 things live in the frontmatter: PROSE fields (plain strings, 2 to 6
@@ -209,7 +214,7 @@ Then the body, in my own voice: the guided tour of my setup, with real
 labels from Phase 2 where a tool's standing matters (retired, experimental,
 recalled only), the findings (stale memory, a claim without a mechanism, a
 bypass), and a "By the numbers" block from Phase 1 (window length, sessions,
-prompts per day, review rate, and the prediction vs observed pair from Q11).
+prompts per day, review rate, and the guess vs observed pair from Q11).
 Numbers make this profile different from a memory-based one; keep them. In
 cold mode the block says plainly: no window, nothing observed. Self-reports
 never stand in for observations.
