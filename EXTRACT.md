@@ -203,7 +203,7 @@ this conversation and confirm them.
 Phase 6 · Show me the complete file. I approve or edit. Only then save
 stack-submission.md in ~/show-your-stack/ and regenerate the deck: copy
 deck-template.html from this kit to ~/show-your-stack/deck.html and replace
-the placeholder {{STACK_JSON}} with the frontmatter as JSON (escape any
+{{STACK_JSON}} (every occurrence) with the frontmatter as JSON (escape any
 "</script" inside strings). Tell me to open it: that is my talk, ready.
 
 Phase 7 · Hand-off by pull request. Only after my Phase 6 approval.
