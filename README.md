@@ -81,7 +81,7 @@ remove the observer rule and the hook.
 - Remove it in one step. Part 2 offers to strip the rule and the hook, or
   delete the block between the `show-your-stack:observer` markers yourself.
 
-Calls, recordings and profiles never publish without the author's OK.
+No calls, no forms, no uploads: the kit is the whole process. Your profile never publishes without your OK, and merging happens only after you opened the pull request yourself.
 
 ## Files
 
