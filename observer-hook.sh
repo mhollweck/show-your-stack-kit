@@ -27,6 +27,8 @@ try:
 except Exception:
     sys.exit(0)
 p = (d.get("prompt") or "").replace("\r", " ").replace("\n", " // ").strip()
+if p.startswith("<cross-session-message"):
+    sys.exit(0)  # agent-to-agent messages arrive on this event too; not a human prompt
 if p:
     with open(sys.argv[1], "a") as f:
         f.write("%s\t%s\t%s\n" % (datetime.datetime.now().strftime("%Y-%m-%d %H:%M"), d.get("cwd", ""), p))
