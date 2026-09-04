@@ -1,74 +1,42 @@
-# Local rendering and analysis
+# Local analysis first; optional asset rendering later
 
-The agent follows `PRIVACY.md`, `SEED.md`, `SCAN.md`, and `EXTRACT.md` to help
-the participant analyze eligible nonconfidential workflows. Capture, analysis,
-profile, and presentation stay on their device. No files or progress messages
-are returned to Maria, GitHub, or a community. GitHub account setup is not needed.
-The legacy `approve` and `submit` commands are disabled; do not use an older
-kit checkout, saved consent, or another transport to bypass this policy.
+The participant's agent follows SEED.md, SCAN.md, DOSSIER.md, and EXTRACT.md
+to discover the stack and produce one detailed stack-analysis.md. That file
+contains the inventory, custom-tool mechanics, task traces, optimization loop,
+questions, and local evidence/disclosure appendices. No script can replace
+that interpretation or prove that the agent found every private tool.
 
-Claude's configured provider processes its inputs. Local files are not a
-promise of fully offline analysis. Do not read company secrets, company prompt
-histories, confidential employer/client material, or customer data at all.
-Use a fresh session outside company projects and generic notes when uncertain.
-See [PRIVACY.md](PRIVACY.md) for the complete source and processing boundary.
+Personally owned unpublished tooling is eligible within approved scope.
+Company/client secrets and credentials remain excluded; read PRIVACY.md.
+Existing relevant context is useful evidence of recollection, not proof of
+current use. Capture and final documents are not sent anywhere by this kit.
 
-## Render a standalone local presentation
+## Optional later deck
 
-Requires Python 3.10+. Use the inspected renderer from a verified privacy-aware
-kit checkout outside source repositories and cloud-synced folders. Install
-its single YAML dependency before reading evidence when possible:
+When the participant asks for a local presentation, derive a compatible
+stack-submission.md profile from the reviewed dossier sections. Exclude local
+private appendices and unselected details. The renderer supports the existing
+site schema and has no network/model calls. It does not consume the dossier
+format directly; this editorial conversion preserves the distinction between
+a detailed working account and a readable deck.
+
+Requires Python 3.10+ and PyYAML. In the pinned kit checkout:
 
 ```sh
 python3 -m venv .venv
 .venv/bin/python -m pip install -r requirements.txt
+.venv/bin/python scripts/stack_kit.py render /ABSOLUTE/CAPTURE/derived/stack-submission.md --output /ABSOLUTE/CAPTURE/derived/presentation.html
 ```
 
-Dependency installation downloads public software. Do not include participant
-content in network requests. The renderer itself reads only the specified
-local profile, writes the chosen HTML output, and does not read history,
-call models, make network requests, send telemetry, or start background work.
+Dependency installation fetches public software without participant data.
+Open the deck locally, review every slide and speaker note, and keep it on
+the participant's device. Arrow keys navigate, N toggles notes, and Print
+saves a landscape PDF. Existing approved scope applies to any preparation;
+rendering or approval does not grant permission to transmit the asset.
 
-```sh
-.venv/bin/python scripts/stack_kit.py render \
-  ~/show-your-stack/CAPTURE_ID/drafts/stack-submission.md \
-  --output ~/show-your-stack/CAPTURE_ID/drafts/presentation.html
-```
-
-`stack-submission.md` is retained as a compatible profile filename; it does not
-mean the file will be submitted. After review, save the profile and HTML in the
-capture's `final/` directory. Do not create transport consent or run any return
-command. Finishing the local presentation is the completed outcome.
-
-The renderer uses safe YAML loading with duplicate-key rejection and escapes
-profile text, labels, evidence, and notes. The standalone HTML embeds styles
-and controls, has no external fonts/scripts/assets, and uses a restrictive
-content policy. Use a local browser preview. Arrow keys navigate, N toggles
-speaker notes, and Print saves a landscape PDF. Do not create a hosted preview
-or use an external presentation/conversion service. Claude viewing a local
-screenshot is still subject to provider processing.
-
-Review every slide and its notes. Only generic process events, public tool
-names, synthetic evidence IDs, bounded counts, and unknowns belong in the
-profile or presentation. Never include real names, source paths, commands,
-actual prompt strings, code/config fragments, internal identifiers, company
-metrics, or business/customer details. A renderer validates formatting; it
-cannot guarantee the content contains no secrets.
-
-Missing section slides use their profile text. Use "Not collected", "unknown",
-or "not applicable" when appropriate. `gems: []` avoids inventing advice.
-Optional evidence metadata uses:
-
-```yaml
-evidence:
-  mode: partial-evidence
-  summary: "A bounded set of eligible process notes and author confirmations."
-  sources: ["Selected nonconfidential workflow samples", "Generic author account"]
-  limitations: ["Selected evidence cannot establish whole-window totals."]
-```
-
-Slide specs accept a `notes` string. Existing profile keys and layout types
-remain compatible. Consult `EXTRACT.md` for a minimal profile and layout limits.
+The old approve/submit commands are disabled before file reads or network
+actions. Old arguments, consent, and RETURN_REPO cannot enable them. The
+legacy observer-hook.sh is inert. Never substitute a different upload path.
 
 ## Verification
 
@@ -76,12 +44,9 @@ remain compatible. Consult `EXTRACT.md` for a minimal profile and layout limits.
 .venv/bin/python -m unittest discover -s tests -v
 ```
 
-Verify that rendering still works and legacy approval/submission commands stop
-before network access. Use synthetic data; never test secret handling by reading
-actual company secrets. The old prompt hook remains disabled. Automated checks
-cannot prove an agent always follows instructions or detects confidential context;
-a real participant pilot must check scope, generic-only notes, and local finish.
-
-Later sharing of a deliberately nonconfidential summary would be a separate,
-explicit future flow. No GitHub handoff, fork contribution, invitation, or
-community publication is implemented as part of this local capture.
+These checks cover local rendering and blocked export, not quality of stack
+understanding. Prompt quality needs behavioral evaluation with a known stack:
+private tools, undocumented script interfaces, alias/scheduler connections,
+current versus retired/prototype/dependency-only items, missing source evidence,
+and self-reported versus measured benefit. Assess source-linked explanations
+and unresolved questions, not a keyword count or a polished slide alone.

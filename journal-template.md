@@ -1,84 +1,134 @@
-# Show Your Stack · local process journal
+# Show Your Stack · targeted local observations
 
 capture_id: CAPTURE_ID
 kit_commit: KIT_COMMIT
 privacy_policy: local-only-v1
 sharing: disabled
+analysis_format: stack-dossier-v1
 start_utc_inclusive: START_UTC
 end_utc_exclusive: END_UTC
 timezone: TIMEZONE
-coverage: sampled eligible sessions; not a complete activity log
+coverage: sampled eligible events; not a complete activity log
 observer_validation: unverified
 
-This journal stays on the participant's device. It is not sent to Maria,
-GitHub, or a community. Claude's provider still processes material it reads.
-Do not include employer/client confidential context, even as a paraphrase.
-The scope/config paths are held separately in minimal local capture state.
+This optional journal supports the one working document, stack-analysis.md.
+It is not a second final deliverable. Both stay with the participant; neither
+is sent to Maria, GitHub, or a community. Claude's provider processes what it
+reads, so local storage is not fully offline processing.
+
+## Questions this observation should answer
+
+<Copy the specific unresolved questions chosen in SEED.md, with stable Q-IDs,
+relevant tool IDs, existing evidence, and what an observable answer would be.
+For example: Q-1: Is tool-2's evidence handoff consumed by a human before merge?
+A configured review gate does not answer that; an eligible observed human
+review or a separately labeled participant confirmation might.>
+
+Do not collect an indiscriminate diary. A useful sample resolves or narrows a
+question about cadence, an invocation condition, a missing handoff, a human
+gate, bypass behavior, failure/recovery, or whether a tool is actually adopted.
+Do not manufacture failures, execute a discovered tool, or alter the workflow
+for a sample.
 
 ## Before logging
 
-Require the current privacy policy, confirmed nonconfidential session, approved
-canonical roots, and valid UTC window. Write nothing before start, at/after
-end, with unknown time or invalid dates, outside eligible roots, or after the
-participant stops capture. If confidential context appears, stop without
-writing a summary. Never inspect histories or company sources through this rule.
+Require the current privacy policy, approved source/name scope, a saved question,
+known current time, and a valid UTC window. Write nothing before start, at/after
+end, with invalid dates, outside eligible roots, after stop/cancellation, or once
+the document is complete-local. Never inspect old histories through this rule.
 
-Use a meaningful task checkpoint; do not pretend it proves a session ended.
-Only the coordinating agent writes local entries. Avoid distributing evidence
-to extra agents or services for this capture. Assign a synthetic local sample
-ID, not the host's real session identifier. Update the same sample only when
-new eligible evidence warrants it. Do not collapse unrelated sessions or
-count repeated references twice. Concurrent sessions may write separate local
-sample files for a later safe merge; never overwrite another session's notes.
+Personally owned private/unpublished tools are eligible within scope. Use their
+actual names locally if approved, otherwise the participant's aliases. Existing
+relevant authorized context can interpret a safe event; do not force a blank
+session or reread sources unnecessarily. Recalled context and configuration
+are leads, not observed events or proof of current usage.
 
-## What may be recorded
+Company/client confidential material and credentials remain excluded. Do not
+copy or paraphrase confidential business content from a mixed session. If safe
+process facts cannot be separated confidently, pause capture and ask for a
+participant description or use a neutral session. Label descriptions SELF;
+they do not become OBS just because they were supplied during the window.
 
-Generic process events, publicly known tool names, neutral aliases, synthetic
-evidence IDs, bounded counts, and unknowns. Do not record real names, paths,
-commands, code/config fragments, actual prompt strings, source screenshots,
-raw session IDs, internal tool identifiers, customer/personal data, business
-content, or original task descriptions. Use "a check ran; result passed",
-without the command, work product, issue identifier, or company context.
+## Keep bounded, useful evidence
+
+Only the coordinating agent writes local entries. Do not distribute capture
+evidence to additional agents/services. Assign synthetic sample IDs and reuse
+the dossier's canonical tool IDs so aliases do not become duplicate tools.
+Do not use raw host session IDs or copy logs. Prefer one compact sample per
+participating session; distinct events answering different questions may have
+separate samples. Update an existing sample when more eligible evidence arrives
+instead of counting the same event twice. Concurrent sessions may use separate
+local sample files for a safe merge; never overwrite another session's notes.
+
+Aim for 100 to 250 words per sample, with only fields relevant to its questions.
+Keep a meaningful checkpoint rather than pretending it proves a session ended.
+Preserve actual invocation conditions, input/output categories, decision rules,
+handoffs, human control, and observed results. A useful note says which tool
+prepared which evidence category, what blocked progress, who acted next, and
+what remains unknown; "uses tools and runs checks" loses the mechanism.
+
+Do not record raw prompts, code/config fragments, command payloads, source
+screenshots, logs, credentials, customer/business details, or confidential work
+products. Safe owned-tool names, public tool names, tool IDs, artifact categories,
+and plain-language interface behavior may be recorded. Necessary private paths
+or exact owned interfaces belong only in stack-analysis.md's local evidence
+appendix, within approved scope, rather than copied throughout the journal.
 
 ## Entry format
 
-### OBS-001 · YYYY-MM-DD · project-1
+### OBS-001 · YYYY-MM-DD · approved project/tool alias or local name
 - sample_key: locally generated synthetic ID
-- coverage: partial checkpoint or supported completed-session summary; gaps
-- workflow: generic observed steps, with unfinished steps marked unknown
-- framing: generic request shape; visible request count or unknown
-- delegation: observed delegation pattern; public tool/model name if known
-- review: evidence of human/agent review; unknown if unseen
-- verification: generic check type and observed result; requested-only marked
-- version_control: generic branch/worktree/commit practice or unknown
-- correction: generic revision loop if observed; no business/task details
+- questions: Q-ID(s) this sample helps answer
+- tool_ids: canonical IDs from the working stack map
+- coverage: partial checkpoint or supported completed-session summary; what
+  was visible, where the trace ends, and missing context
+- trigger_and_actor: who/what started the action and its actual condition;
+  mark requested/configured behavior separately
+- input_decision_output: input category -> tool/routing/decision -> observed
+  artifact or state change; no private payloads or copied implementation
+- handoff_and_human_gate: downstream consumer, approval/override point, and
+  evidence of action; ready-for-review does not mean reviewed
+- failure_recovery_or_bypass: what stopped/changed, retry/fallback/manual
+  intervention observed, or unknown/not applicable
+- result_for_question: answered, narrowed, or still unknown; evidence and
+  any competing explanation
 
-Counts apply only to these samples. Do not infer a person reviewed code from
-an agent's diff command. Do not infer full-window rates, total sessions, time
-saved, spend, company performance, or other unsupported metrics.
+Do not fill unseen fields with assumptions. No incident needs to occur merely
+to fill the failure field. Keep participant explanations marked SELF and prior
+context/configuration marked CTX/CFG when interpreting an OBS event.
 
-## Check-ins and finish
+For any count, state numerator, denominator, unknowns, and sampling scope.
+Do not infer a person reviewed from an agent's diff command, deployment from
+a passing test, or complete cadence from a few samples. Time/cost benefits
+remain self-report without supporting measurements. No company performance
+metrics or unsupported whole-window rates belong in the record.
 
-At a natural eligible task boundary, an optional check-in can ask whether the
-sample missed a generic workflow habit. At most one per seven-day period;
-record that state without repeating the journal. Do not require failure stories.
+## Check-ins, integration, and finish
 
-At/after the exclusive end, stop logging. On the next eligible session, resume
-local analysis with the privacy-aware pinned EXTRACT.md and give the one-time
-notice. No active session means no instant reminder. Final review is local;
-no upload, return, identity lookup, or publication happens at completion.
-The participant can stop early and choose whether to keep/delete local notes.
+At an eligible natural boundary, ask a targeted follow-up only if the answer
+would resolve a saved question. An optional progress check-in is at most once
+per seven-day period; save that state without repeating the journal. Do not
+require a failure story, surprising insight, or measurable productivity claim.
+If questions are already resolved, offer finishing early instead of collecting
+more notes for their own sake. Window changes require participant direction.
 
-## Expectations (optional self-report)
+At/after the exclusive end, stop logging. On the next eligible session, give
+the one-time notice and resume pinned EXTRACT.md. Integrate supported findings
+and question status into the same stack-analysis.md: tool cards, task traces,
+workflow improvement loop, and evidence appendix. Keep corrections alongside
+claims and preserve uncertainty. Do not produce competing inventories, flow
+reports, a profile, or a deck as additional required outcomes.
 
-<Generic expectations about planning, delegation, and review, if provided.>
+No active session means no instant reminder. Finish with local document review;
+no upload, account lookup, return, community import, or publication follows.
+The participant chooses whether to keep/delete generated notes. The dossier
+can later supply selected reviewed sections for locally prepared assets, if
+requested, while its private appendix remains excluded from asset preparation.
 
-## Scope aliases
+## Scope and baseline
 
-<Neutral project-1 aliases only; no actual source paths or names.>
-
-## Baseline
-
-<Generic safe configuration evidence IDs; unknowns explicit.>
+<Approved tool IDs and local-name/alias preferences; relevant CTX/CFG/HST/SELF
+IDs and question status. Scope paths stay in state or the dossier appendix.
+No new source access is granted by listing a name here.>
 
 ## Entries

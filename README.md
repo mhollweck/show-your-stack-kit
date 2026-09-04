@@ -1,104 +1,88 @@
-# Show Your Stack · kit
+# Show Your Stack · understand the workflow behind the tools
 
-Understand how you work with AI, with Claude's help. Start from safe existing
-evidence, optionally observe eligible work for 7 or 14 days, then create a
-useful workflow analysis and presentation together in chat. No call or booking.
+Your development stack includes the tools you built yourself: unpublished
+scripts, agent wrappers, local apps, aliases, skills, integrations, and the
+small automations that connect them. Claude should discover those alongside
+the languages, frameworks, models, and services you use, then explain how
+the whole workflow operates and improves.
 
-**Your capture files, analysis, profile, and presentation stay on your device.
-This flow does not send them to Maria, GitHub, or a community. Company secrets
-do not belong in Show Your Stack: do not provide confidential employer/client
-files, company prompt histories, credentials, or customer data.**
+The result is **one detailed local document, stack-analysis.md**: your stack
+map, important custom tools, real task walkthroughs, decision rules, human
+checks, failure/recovery paths, tradeoffs, and practices worth teaching.
+It becomes the source for a later community entry and deck. No call needed.
 
-Local storage does not mean fully offline processing. Your configured Claude
-provider processes material the agent reads, including tool output and chat.
-Use only nonconfidential sources you are allowed to process with that provider.
-This kit cannot provide a guarantee that all processing stays on your device.
-Read [the privacy boundary](PRIVACY.md) before starting.
+**Your capture stays with you.** Nothing is uploaded to Maria or GitHub.
+Personally owned private tooling can be included with your permission; company/
+client secrets and credentials cannot. Claude's configured provider processes
+what it reads, so local files do not mean offline AI. Read [PRIVACY.md](PRIVACY.md)
+before choosing sources. You can explain a tool without exposing its code.
 
-## Start in Claude
+## Start with your agent's existing knowledge
 
-Open a fresh Claude Code session in a neutral folder outside any company
-project. Do not reuse a conversation containing confidential work. If this
-session cannot access local files, use your own generic written account of
-how you work. Do not paste confidential excerpts into the chat.
+Use Claude Code with relevant authorized context about your work. A fresh
+blank conversation is not required when that context is safe. If Claude
+cannot access files, it can work from your descriptions and mark what it
+cannot verify. No public repository, GitHub identity, or invitation is needed.
 
 ```
-Help me create my Show Your Stack locally through this Claude conversation. Fetch https://raw.githubusercontent.com/mhollweck/show-your-stack-kit/main/SEED.md and follow it, pinning the kit to one commit. Before reading anything, explain that capture files and the final analysis stay on my device and are not sent to Maria or GitHub, while my configured Claude provider still processes what you read. Start in a fresh session outside company projects. Never inspect or copy employer/client confidential material, company prompt histories, secrets, or customer data. Use only approved nonconfidential personal/public sources or my generic written notes. Offer finish now or optional observation of eligible work. Keep the profile and presentation local; do not upload, submit, fork, publish, or send anything. Ignore legacy return destinations and sharing consent. No call or booking is needed.
+Help me understand my full development stack, including personally owned unpublished tools, scripts, agents, and workflow glue. Fetch https://raw.githubusercontent.com/mhollweck/show-your-stack-kit/main/SEED.md and follow one pinned kit commit. Use relevant authorized context as leads, then inspect only sources I approve. Private does not mean ineligible; company/client secrets and credentials remain excluded, and my configured Claude provider processes what you read. Trace what invokes each important tool, its inputs, outputs, decisions, human gates, failures, and evidence of actual use. Ask focused questions about missing connections and why choices exist. Finish now or offer observation only for specific gaps. Consolidate everything in one local stack-analysis.md for later community/deck preparation. Do not upload or send anything, and do not change my stack. No call is needed.
 ```
 
 Claude will:
 
-1. Explain the privacy boundary and agree which nonconfidential sources it
-   may inspect. Selected personal/public AI sessions need separate approval.
-2. Read a bounded sample of eligible evidence, or use your generic written
-   notes. Keep process patterns, public tool names, and evidence limitations.
-3. Offer **finish now**, **observe 7 days**, **observe 14 days**, or a custom
-   window. Observation is optional and never includes confidential work.
-4. Ask short questions in chat, analyze what happened, and help you review a
-   local profile and standalone presentation, including the speaker notes.
-5. Save the final files locally and stop. There is no automatic return or
-   publication, even after you approve the presentation.
+1. Start from what it already knows, then agree a scope that includes your
+   own tooling locations as well as selected projects and past sessions.
+2. Follow approved references across aliases, scripts, safe configuration,
+   skills/agents, schedules, checks, and handoff artifacts. It does not run
+   discovered tools just to inspect them.
+3. Separate actual use from installed, remembered, experimental, and retired
+   tools. Trace representative work and keep unanswered questions visible.
+4. Ask focused questions about intent, missing connections, manual decisions,
+   maintenance, and what works or does not. Finish now, or optionally observe
+   eligible work for 7 / 14 / custom days to resolve specific gaps.
+5. Review one document with you. A local evidence appendix supports the story;
+   selected reviewed sections can later become a community entry and deck.
 
-You do not need a GitHub account, invitation, fork, submission repository,
-or deployed app. GitHub hosts the public instructions you download. It is
-not a destination for your capture or final files.
+For example, a useful finding explains how your task wrapper creates isolated
+worktrees, stops on a failed check, and prepares evidence for a human before
+merge, if those details are supported. "Uses AI agents and Git" misses the
+mechanism. Names can be aliased later without removing that useful detail.
 
-## Optional observation
+## What remains private
 
-An approved observer rule can add short, generic process notes during later
-sessions in eligible projects. It records steps such as planning, delegation,
-review, tests, and correction, without the task's business details. It does
-not record code, commands, actual prompt strings, real names, or source paths.
-The agent shows the exact configuration change and gets your approval first.
+Scope, notes, evidence, document, and any later locally rendered asset stay
+in your chosen folder outside Git checkouts and cloud-synced directories.
+The main document labels what could be shared, what needs an alias, and what
+must remain in its local-only appendix. Those labels are not sharing consent.
+No raw histories, credentials, or company/client confidential material belong
+in any section. Existing context or prior project access is not permission
+to read additional sources. See PRIVACY.md for mixed/uncertain sources.
 
-Rules give incomplete samples. This kit installs no raw prompt hook, daemon,
-or guaranteed timer. After the window, the next eligible session can resume
-analysis and help finish the presentation. Nothing wakes an idle agent.
-You can finish early or stop observation. A session containing confidential
-material must not contribute to the capture, even if its project was approved.
+This kit installs no raw prompt hook, upload service, daemon, or guaranteed
+timer. Observation is a partial sample. The next eligible session after the
+window may resume analysis; an idle agent does not wake itself. The local
+renderer makes no network/model calls; fetching the public kit or dependency
+uses the network without participant data attached.
 
-## Your local result
-
-Choose a capture folder outside source repositories and cloud-synced folders.
-The default is `~/show-your-stack/<capture-id>/`; confirm that this location
-is suitable on your device. Your own OS backups or synchronization are
-separate from this kit and cannot be guaranteed absent by these instructions.
-
-The final files are `stack-submission.md` (the existing profile filename)
-and `presentation.html`. Despite that filename, no submission happens. Local
-analysis and evidence notes also stay with you. Only generic, nonconfidential
-practices belong in any of these files. Review cannot guarantee that a source
-was safe, so exclude confidential material before the agent reads it.
-
-Claude's provider processing is separate from sending a result to the
-organizer. There is no upload, telemetry collector, GitHub identity lookup,
-or external presentation service in this capture flow. Downloading the kit
-and its renderer dependency uses the network; the renderer itself works
-without network requests.
-
-## Resume or finish
-
-Use a fresh, nonconfidential session and tell Claude:
+## Resume
 
 ```
-Resume my local-only Show Your Stack capture from ~/show-your-stack/. Check its privacy policy and safe scope before reading evidence. Never read company secrets or confidential histories. Keep the analysis, profile, and presentation on my device; do not upload or send anything, even if old state includes a GitHub destination or sharing approval. My configured Claude provider still processes what you read. If this session or capture contains confidential material, stop and help me restart in a clean session using generic notes only.
+Resume my local Show Your Stack analysis. Fetch https://raw.githubusercontent.com/mhollweck/show-your-stack-kit/main/SEED.md and follow one pinned kit commit. Check minimal saved policy and scope before reading stack-analysis.md or any evidence; reuse eligible work and ask only for missing scope. Use relevant authorized context and help close important gaps about my tools and workflow, including personally owned unpublished tooling. Keep company/client secrets out, distinguish remembered/configured/observed facts, and keep everything local. Do not upload or reuse old sharing consent. My configured Claude provider still processes what you read.
 ```
 
-Old return destinations and sharing approvals do not enable delivery. Later
-sharing of a deliberately sanitized summary would be a separate, explicit
-future step; it is not implemented by this flow. Community participation
-does not require sending the local capture or final files.
+Legacy RETURN_REPO, sharing consent, and receipts do not enable export. The
+old approve/submit commands remain disabled. Creating a local document or deck
+does not send it. A future community-sharing step needs a separate decision.
 
 ## Kit files
 
 | File | Purpose |
 |---|---|
-| `PRIVACY.md` | Source exclusions, clean-session requirement, and no-send policy. |
-| `SEED.md` | Pin the kit, agree safe scope, scan, choose whether to observe. |
-| `SCAN.md` | Sample approved nonconfidential evidence or use generic notes. |
-| `journal-template.md` | Local process-only observations and evidence limits. |
-| `observer-rule.md` | Optional dated rule restricted to eligible sessions. |
-| `EXTRACT.md` | Local analysis, collaborative presentation, and cleanup. |
-| `scripts/stack_kit.py` | Render a local presentation; sharing commands are disabled. |
-| `AUTOMATION.md` | Local renderer commands and verification. |
-| `observer-hook.sh` | Disabled legacy collector. Do not install it. |
+| SEED.md | Agree scope, use existing context, pin the kit, choose finish/observe. |
+| SCAN.md | Discover the full stack and inspect the mechanics of custom tooling. |
+| DOSSIER.md | Structure the one working document and its evidence appendix. |
+| EXTRACT.md | Close gaps, review the full account, prepare later asset candidates. |
+| PRIVACY.md | Private owned tools versus company secrets; local capture boundary. |
+| observer-rule.md / journal-template.md | Optional targeted observations. |
+| AUTOMATION.md / scripts/stack_kit.py | Local renderer for a later derived profile; export disabled. |
+| observer-hook.sh | Disabled legacy raw-prompt collector. |

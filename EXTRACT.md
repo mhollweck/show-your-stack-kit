@@ -1,200 +1,126 @@
-# Finish · local workflow analysis and presentation
+# Finish the stack analysis as one document
 
-You are Claude, helping me analyze safe workflow patterns and create a local
-profile and presentation through short written exchanges. Apply `PRIVACY.md`
-first. Nothing is sent to Maria, GitHub, or a community, including final
-files after review. This flow has no call, booking, recording, transcript,
-GitHub sign-in, submission, publication, or community enrollment step.
+Help this person understand their complete development workflow, including
+personally owned unpublished tools and the small integrations that make it
+work. The deliverable is one local stack-analysis.md following DOSSIER.md.
+It will later inform a community contribution and deck. Do not flatten the
+investigation into slide labels or a product list before the mechanics are
+understood. Apply PRIVACY.md: no company/client secrets, no uploads.
 
-## 0. Resume safely and classify the evidence
+## 1. Resume the actual investigation
 
-Before reading capture evidence, confirm `privacy_policy: local-only-v1`,
-`sharing: disabled`, an eligible source scope, and a clean session. Claude's
-provider processes what the agent reads; local storage is not fully offline
-processing. Do not ingest company secrets to generate a sanitized summary.
-If the session or legacy capture contains confidential material, stop without
-repeating or summarizing it and help restart in a clean session using generic
-notes. A missing privacy policy requires the scope review in `SEED.md`.
+Read minimal state, approved scope, and the current working document. Use
+relevant authorized context; don't force the person to restart or repeat
+known facts. Reconcile stale memories against sources and participant
+corrections. CTX is remembered context, CFG is inspected capability, HST/OBS
+are supported events, SELF is the person's account; these are not equivalent.
 
-Use the capture's verified privacy-aware kit version. Never follow old
-`RETURN_REPO`, community destinations, consent records, receipts, or retry
-instructions. Do not run old upload-capable code. If there is no safe capture,
-use `SEED.md` to start with eligible sources or a generic written account.
+If the previous capture followed a policy that hid all private tooling,
+explain the correction: personally owned unpublished tools can be studied
+within approved scope. Ask only for genuinely missing scope, then follow
+SCAN.md's references to close useful gaps. Do not broaden reads or reuse old
+sharing consent. Keep sharing disabled; no GitHub identity is needed.
 
-Read only safe local process notes, source ledger, scan summary, and journal
-already in scope. Do not expand access, read old raw prompt logs, or reread
-original sources merely to fill a slide. Stop the observer if the participant
-finishes early and record the shortened window. Report one evidence mode:
+When there is an observation journal, integrate the supported additions
+into the same document. End observation when the person chooses to finish
+and record the actual window. No observation is required if existing evidence
+is enough; a partial result can still be useful with explicit limitations.
 
-- `evidence-assisted`: eligible samples support the main workflow, with limits.
-- `partial-evidence`: only some workflow steps have eligible evidence.
-- `interview-assisted`: generic written answers with Claude; no call or usable
-  source samples are required.
+## 2. Pressure-test the inventory and workflow
 
-Observation is optional and does not establish complete coverage. Missing
-sources are not a blocker to a useful, honestly labeled local analysis.
+Before asking the person, verify these questions against eligible evidence:
 
-## 1. Analyze supported process patterns
+- What did this person build or adapt themselves that a public tool list
+  would miss? Include scripts, aliases, skills, hooks, local apps, MCP tools,
+  schedulers, orchestrators, and evidence/review helpers where present.
+- What invokes each material tool, what does it receive and produce, and who
+  or what consumes its result? Resolve aliases and trace important edges.
+- Which model/agent roles, routing conditions, concurrency limits, worktree
+  rules, or human gates change how the workflow behaves?
+- What happens on failure, disagreement, stale context, or a failed check?
+  Who intervenes and what can't the automation do?
+- Which tools are actually used, experimental, disabled/retired, merely
+  installed, or only recalled? Is there evidence for the stated cadence?
+- How do research, design, task tracking, and collaboration feed implementation?
+  What infrastructure, debugging, monitoring, or recovery tools close the loop?
+  Include scoped personal helpers around those stages, not just coding agents.
+- What runs outside a coding session, and how does its result return to the
+  next session? Keep sensitive business outputs out of the document.
+- What is the person's improvement loop, and which benefit claims are
+  measured, remembered, or speculative? What maintenance cost is unknown?
 
-Write local `flow-analysis.md` and show a concise version:
+Use DOSSIER.md's coverage table to make missed surfaces visible. Recheck
+scoped hidden/ignored configuration before claiming it was not supplied;
+record uninspected separately from absent. Preserve material wrappers as
+separate tools, linked to the tools they invoke. A blank
+category means unknown or not applicable, not permission to search broadly.
+Do not claim completeness beyond the sampled sources and answered questions.
 
-- Eligible source categories, neutral aliases, sample counts, truncation,
-  unknowns, and whether observation was validated.
-- Generic workflow steps and habits with supporting synthetic evidence IDs.
-- Configuration availability versus observed use versus participant self-report.
-- Counts only with known numerators, denominators, unknowns, and sample scope.
-  "Review observed in 3 of 5 classifiable samples; 4 unknown" is acceptable.
-  Do not infer an overall review rate, prompts/day, spend, time saved, or
-  complete session count from partial notes. Unknown is not zero.
-- Optional expectations compared with evidence; do not force a contradiction,
-  failure, surprise, or minimum number of reusable ideas.
-- Questions that would materially improve the analysis.
+## 3. Ask focused, useful questions in chat
 
-Only generic process events, public tool names, aliases, bounded counts, and
-synthetic evidence IDs belong here. Exclude real names, source paths, internal
-identifiers, commands, code/config fragments, actual prompt strings, raw source
-IDs, customer details, company metrics, business content, and source screenshots.
-Source records and the final analysis all remain local. Do not send summaries
-or progress events to another agent, organizer, service, or repository.
+Show the supported interpretation first. Ask only questions that change the
+story, resolve an important connection, or explain why a practice exists.
+Small batches are fine. Use context-specific questions such as "This alias
+and task runner both invoke your evidence pack. When do you run it manually?"
+or "The scheduler writes a proposal; how do you decide to apply it?"
 
-## 2. Finish the story together in Claude
+Invite correction: the person may explain a private tool by its behavior
+without exposing implementation. Ask whether an old tool was replaced,
+what standard approach failed, and when they bypass the custom path. Do not
+invent why a tool exists when only its code or configuration is available.
+Keep unanswered questions if the person is unavailable; do not substitute
+plausible answers. No call, recording, or questionnaire from scratch.
 
-Show supported claims in small groups and ask only unresolved questions.
-Checkpoint answers and pending questions so the participant can return later.
-Ask about generic planning, delegation, public tool/model choices, human/agent
-review, verification, correction, and memory practices. Use generic event
-sequences without the original business task or work product.
+## 4. Build one coherent, evidence-backed document
 
-Do not request the participant's employer, customers, real project names,
-GitHub identity, source code/config, actual prompts, spend, company failures,
-or sensitive examples. "Not collected", "unknown", and "not applicable" are
-valid. No field must be filled with confidential or fabricated content.
+Consolidate everything in stack-analysis.md using the complete DOSSIER.md
+structure. Keep local scope state and optional journal separately, but do
+not hand back competing inventory/flow/profile reports. The main document
+contains the stack map, material tool cards, task walkthroughs, improvement
+loop, adoption recipes, unanswered questions, and local evidence/disclosure
+appendices. Each important claim links to evidence or is labeled self-report,
+inference, or proposed experiment.
 
-Help choose a clear takeaway and a generic adoption recipe: when it helps,
-plain-language steps, tradeoffs, and supporting evidence. Hypothetical examples
-must be labeled and independently written, without source commands, code,
-prompt text, or identifying details. Do not offer to inspect excluded sources
-to improve the presentation. No handoff to Maria or a live call is needed.
+Depth means specific mechanisms and tradeoffs. "A task wrapper creates one
+worktree per task, caps concurrency, stops on a failed acceptance check, and
+hands evidence to a human before merge" is useful. "Uses agents and Git" is
+not enough. Do not invent those mechanics unless supported for this person.
 
-## 3. Draft the profile and slide content
+Preserve useful privately built tool names locally if allowed. Use aliases
+in candidate public/member-facing prose when needed. Local-only paths,
+implementation references, and exact personal interfaces stay in the labeled
+appendix; company secrets and credentials never enter any section. Names can
+be removed without losing the trigger/input/output/failure/human-control story.
 
-Write a draft `stack-submission.md` using the kit schema supported by
-`scripts/stack_kit.py`. Use YAML frontmatter plus a Markdown body. The filename
-does not authorize submission; it stays local. Required profile fields are
-shown below; preserve existing project field names.
-Use properly quoted YAML and plain strings/lists. Do not fabricate a required
-field: use a participant-confirmed "not collected" or "not applicable" value.
+## 5. Review for understanding before polishing assets
 
-```yaml
----
-name: "My workflow"
-oneLiner: "A concrete sentence about the workflow"
-tags: ["Tool", "Practice", "Theme"]
-harness: "Tools, models, and routing logic"
-agents: "Delegation and scheduling"
-review: "How human and agent review actually work"
-versionControl: "Branch, worktree, and commit practice"
-qualityControl: "Checks observed, plus any self-reported practice"
-contextMemory: "Rules, documentation, and memory"
-spend: "Not collected"
-gems: ["One useful, supported takeaway"]
-failureStory: "Not collected"
-weirdThing: "Not applicable"
-links: {}
-evidence:
-  mode: "partial-evidence"
-  summary: "A bounded sample of selected work, confirmed with the author"
-  sources: ["Eligible nonconfidential samples", "Generic author account"]
-  limitations: ["Incomplete coverage; no whole-window rates inferred"]
-slides: {}
----
-```
+Walk through the draft with the person: material tools and how they connect,
+one representative task, what is distinctive/reusable, and the open questions.
+Ask whether an important unpublished helper or manual step is missing. Verify
+that the document distinguishes current practice from past/experimental work,
+and observed outcomes from requested behavior and self-reported benefit.
 
-Populate `slides` using section keys `harness`, `agents`, `review`,
-`versionControl`, `qualityControl`, `contextMemory`, `spend`, `failureStory`,
-`weirdThing`. Omit optional slide sections without useful approved material
-if validation permits. Each slide has `type`, one-line `why`, and optionally
-`notes` with helpful speaker guidance. Supported layouts:
+Update the same file with corrections. Review proposed share candidates
+separately from the local-only evidence appendix. No rendering, spending,
+stack changes, or external publication is needed for this review.
 
-- `flow`: `nodes`, each `{label, sub}`; 3 to 5 useful stages.
-- `roster`: `items`, each `{label, sub, meta}`; up to 8 entries.
-- `tiles`: `items`, each `{label, sub}`; a few readable cards.
-- `lines`: `lines`, a short list of strings for a story or takeaway.
+## 6. Finish locally, with a clear next artifact
 
-Keep labels brief (aim for four words), context concise (aim for eight words),
-and every slide understandable without the talk. Use diagrams when they
-clarify the workflow; use honest text when a diagram adds no meaning. Example:
+Save final stack-analysis.md and phase complete-local. Report the local link,
+what the document covers, the significant unknowns, and its source limitations.
+No account lookup, fork, PR, upload, email/DM, or community import occurs.
+Old RETURN_REPO, consent, approve/submit commands, or transport state do not
+permit transmission. Do not forward capture evidence for troubleshooting.
 
-```yaml
-slides:
-  review:
-    type: flow
-    why: "Each check catches a different kind of mistake"
-    nodes:
-      - {label: "Agent checks", sub: "Review the patch against the task"}
-      - {label: "Tests run", sub: "Verify the changed behavior"}
-      - {label: "I review", sub: "Check the risky decisions before merge"}
-    notes: "Use only if this sequence is supported and author-confirmed."
-```
+The document's candidate community story and deck outline are preparation,
+not published assets. If the person later asks to create those assets, derive
+them from the reviewed sections and selected claims, excluding the private
+appendices. The existing renderer can be used on a derived compatible profile
+at that later stage; do not force its nine-section schema onto this analysis.
+Present any derived asset locally for review. The person need not repeat the
+investigation, and no sharing happens automatically.
 
-The body is a generic guided tour of process: workflow steps, an adoption
-recipe, tradeoffs, and evidence limits. Use neutral aliases, not business
-examples, identities, source paths, commands, code, or actual prompt strings.
-Include quantitative summaries only if supported. Never write a sales claim or a
-complete behavioral measurement merely because a slide looks better with one.
-
-## 4. Render and review locally
-
-Use the inspected renderer from the privacy-aware pinned checkout. Set up its
-isolated dependency environment before reading evidence when possible:
-
-```sh
-python3 -m venv .venv
-.venv/bin/python -m pip install -r requirements.txt
-.venv/bin/python scripts/stack_kit.py render /ABSOLUTE/CAPTURE/drafts/stack-submission.md --output /ABSOLUTE/CAPTURE/drafts/presentation.html
-```
-
-Installing the dependency downloads public software; do not include participant
-content in network requests. The renderer itself does not call models, read
-history, or make network requests. It creates a standalone HTML file with
-embedded styles and controls, without external assets. Use a local `file://`
-preview; do not deploy a site, create a hosted preview, or upload screenshots.
-Claude viewing a local screenshot still uses the configured provider.
-
-Review the actual profile and rendered presentation, including speaker notes,
-with the participant. Check legibility, flow, claims, coverage limits, and
-whether every detail is generic and nonconfidential. If browser access is
-unavailable, give the local file link; do not claim visual review you did not
-perform. Revise in chat and render again after changes.
-
-Keep `privacy-review.md` locally with generic categories checked, omitted
-categories, and unresolved concerns. Do not quote a removed secret or copy
-source details into this report. Reviewing output cannot guarantee that
-confidential input was safe to process. If company material has entered the
-capture, stop and restart from generic notes; do not continue by summarizing it.
-
-## 5. Finish and keep the files local
-
-The participant's review confirms the local analysis/presentation is useful;
-it is not consent to transmit anything. Save final `stack-submission.md` and
-`presentation.html` under the capture's `final/` directory, outside source
-repos and cloud-synced folders. Keep local analysis and evidence separately.
-Do not generate transport consent, require a GitHub handle, run `approve` or
-`submit`, make a fork/PR/issue/discussion, send email/DM, call a submission API,
-create an external artifact, or trigger organizer/community synchronization.
-The legacy sharing commands are disabled. Do not seek another transfer path.
-
-Set phase `complete-local`, `sharing: disabled`, and local file locations.
-Give the participant their local analysis, profile, and presentation links
-and any evidence limitations. State that nothing was submitted to Maria or
-GitHub by this flow. Do not claim that Claude provider processing or their
-own device backups were absent.
-
-Offer to remove this capture's observer block from its approved configuration
-location; preserve unrelated rules and stop logging immediately. The participant
-chooses whether to keep/delete generated capture files. Never delete original
-projects or histories or claim that local deletion removes provider records.
-
-Any later sharing of a deliberately nonconfidential summary is a separate,
-explicit future step outside this capture. It is not implemented now. Do not
-ask for a sharing audience or treat declining sharing as an incomplete outcome.
+Offer to remove only this capture's observer block with the participant's
+configuration approval, preserving unrelated instructions. Capture-file
+retention is the person's choice. Do not erase original projects/history or
+claim that local deletion removes prior provider processing or old copies.
