@@ -53,8 +53,10 @@ Step 4 · Baseline (ask first). Propose a light inventory of MY OWN setup
 (never a company machine's managed config) and wait for my OK:
 which harness(es) I use, the size of my global rules file (line count, not
 contents), and the NAMES of my custom agents, hooks, skills or commands, MCP
-servers, and scheduled jobs. Names and counts only. This is the "before"
-snapshot.
+servers, scheduled jobs, and the unpublished tools I built for myself
+(scripts, aliases, internal apps, glue). My own private tools are not company
+secrets; they are often the best part of a stack. Names and counts only. This
+is the "before" snapshot.
 
 Step 5 · Journal. Fetch journal-template.md. Create ~/show-your-stack/journal.md
 from it: replace START, END and N in the header, keep "How to log" exactly as
@@ -87,7 +89,8 @@ Step 8 · Confirm. Show me a short summary: the journal path, where the rule
 block was written, whether the prompt log is on, START and END, and this one
 line to remember: "When the window closes your agent reminds you. Then run
 Part 2 (EXTRACT.md from the kit)." Mention that Part 2 ends with a pull
-request into Maria's private community repo, so I should accept her GitHub
-invite before then (Part 1 needs no GitHub at all). Tell me I can open the
+request into Maria's private community repo, so I should send Maria my GitHub
+login now (`gh api user --jq .login` shows it) and accept her invite when it
+arrives (Part 1 itself needs no GitHub at all). Tell me I can open the
 journal any time and delete lines I do not like. Then stop. Do not log an entry for this setup
 session; the first real entry comes from my next session.

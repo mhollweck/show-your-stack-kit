@@ -53,7 +53,10 @@ to me:
 Phase 2 · Inventory (after my OK): read the approved files and build a factual
 map: harness(es), conventions, custom agents and what each is for, hooks and
 what they enforce, automations and schedules, MCP integrations, memory and
-context systems. Compare with the Baseline in the journal and note what
+context systems, and the unpublished tools I built for myself (scripts,
+aliases, internal apps, glue): what invokes each, what it produces, who
+checks it. My own private tools are in scope with my OK; company and client
+material never is. Compare with the Baseline in the journal and note what
 changed during the window.
 
 Phase 3 · Interview. Pre-fill every answer you can from the journal and the

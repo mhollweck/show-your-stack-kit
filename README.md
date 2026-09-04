@@ -30,7 +30,7 @@ leaves this machine.
 Works with Cursor, Codex and Gemini CLI too. SEED.md tells your agent where
 its rules file lives.
 
-Your agent will ask you five things: how long the window should be (1 week,
+Your agent will ask you five things (and, at the end, to send Maria your GitHub login for the community repo invite): how long the window should be (1 week,
 2 weeks, or custom), your own 3-line prediction of your workflow, which
 folders are company or client work (excluded from every read), which personal
 project names may appear in the journal, and an OK for a names-only baseline
