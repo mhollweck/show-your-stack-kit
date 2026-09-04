@@ -38,9 +38,6 @@ After END: stop logging. Remind me once to run Part 2 (EXTRACT.md from the kit
 above), then set "reminded: yes" in this header so you do not repeat it.
 Remove nothing.
 
-## Prediction (START)
-<my 3 lines, verbatim>
-
 ## Allowlist
 company or client work (excluded from every read, logged as "work project"): ...
 personal projects by name: ...

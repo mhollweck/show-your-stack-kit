@@ -32,24 +32,26 @@ Ground rules (non-negotiable):
 4. Every change to my config (rules file, settings) is shown to me in full and
    needs my OK before you write it.
 
+Keep my side tiny: one choice for the window, one tick-list reply for scope,
+three OKs (baseline, rule, hook). Do not ask me to describe how I work; that
+is what the window is for.
+
 Step 1 · Window. Ask me how long the window should be: 1 week, 2 weeks
 (recommended), or a custom number of days. Compute START (today) and END
 (START plus N days) as YYYY-MM-DD and echo both back to me.
 
-Step 2 · Prediction. Ask me to describe my own workflow in 3 lines, from
-memory, before any observation: how I prompt, what I delegate, how I check
-that things work. Save it verbatim. Part 2 compares this to what you actually
-observed. That gap is usually the most interesting part of a stack.
+Step 2 · Scope and allowlist, as a tick list, not an essay. Offer to list the
+folder NAMES directly under my home directory and under my projects folder
+(names only, nothing inside them) and wait for my OK. Then show the list and
+ask me to mark three things: which folders are company or client work (those
+are excluded from every read, and sessions in them are logged only as "work
+project" with workflow patterns, nothing else), which personal projects may
+appear in the journal by name (everything else is logged as "a private
+project"), and any people, companies, or repos that must never appear at all.
+One reply from me is enough. Write it into the Allowlist section of the
+journal.
 
-Step 3 · Scope and allowlist. First ask which folders or projects are company
-or client work: those are excluded from every read, and sessions in them are
-logged only as "work project" with workflow patterns, nothing else. Then ask
-which personal project names may appear in the journal by name. Everything
-else is logged as "a private project". Ask if there are people, companies, or
-repos that must never appear at all. Write all of this into the Allowlist
-section of the journal.
-
-Step 4 · Baseline (ask first). If you already know my setup, pre-fill this
+Step 3 · Baseline (ask first). If you already know my setup, pre-fill this
 and have me confirm instead of asking cold. Propose a light inventory of MY
 OWN setup (never a company machine's managed config) and wait for my OK:
 which harness(es) I use, the size of my global rules file (line count, not
@@ -60,18 +62,18 @@ tooling folder, schedules folder, project folders) so Part 2 knows where to
 look without asking again. Names, counts and locations only, no contents.
 This is the "before" snapshot.
 
-Step 5 · Journal. Fetch journal-template.md. Create ~/show-your-stack/journal.md
+Step 4 · Journal. Fetch journal-template.md. Create ~/show-your-stack/journal.md
 from it: replace START, END and N in the header, keep "How to log" exactly as
-written, and fill in the Prediction, Allowlist and Baseline sections. Leave
-"## Entries" empty.
+written, and fill in the Allowlist and Baseline sections. Leave "## Entries"
+empty.
 
-Step 6 · Observer rule. Fetch observer-rule.md, replace START and END, show me
+Step 5 · Observer rule. Fetch observer-rule.md, replace START and END, show me
 the block, and ask for my OK. Then append it to the END of my global rules
 file: ~/.claude/CLAUDE.md for Claude Code (create the file if it is missing).
 For Cursor, Codex, Gemini CLI and others: the equivalent global rules file
 (~/.cursor/rules, ~/.codex/AGENTS.md, ~/.gemini/GEMINI.md).
 
-Step 7 · Prompt log (Claude Code only, optional, recommended). Offer me this:
+Step 6 · Prompt log (Claude Code only, optional, recommended). Offer me this:
 a tiny hook that appends each prompt I send, with a timestamp and the folder
 it came from, to ~/show-your-stack/prompts.log. It gives Part 2 real numbers
 (prompts per day, prompt length, how often I start with a spec). It is local,
@@ -87,7 +89,7 @@ from the journal header). If I say yes:
   { "hooks": { "UserPromptSubmit": [ { "hooks": [ { "type": "command",
     "command": "/ABSOLUTE/PATH/TO/HOME/show-your-stack/observer-hook.sh" } ] } ] } }
 
-Step 8 · Confirm. Show me a short summary: the journal path, where the rule
+Step 7 · Confirm. Show me a short summary: the journal path, where the rule
 block was written, whether the prompt log is on, START and END, and this one
 line to remember: "When the window closes your agent reminds you. Then run
 Part 2 (EXTRACT.md from the kit)." Mention that Part 2 ends with a pull
