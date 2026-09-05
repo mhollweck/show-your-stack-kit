@@ -83,8 +83,15 @@ remove the observer rule and the hook.
   code, never secrets, never names you did not allowlist.
 - You hold the knife. Every file read and every config change asks first.
   Open the journal any time and delete lines you dislike.
-- Remove it in one step. Part 2 offers to strip the rule and the hook, or
-  delete the block between the `show-your-stack:observer` markers yourself.
+- Out at any time, in one line. Paste this into your agent and it removes the
+  rule, the hook and the local folder, and tells you the one message to send
+  Maria if your profile was already shared:
+
+  ```
+  I want to stop Show Your Stack and remove it from my machine. Fetch
+  https://raw.githubusercontent.com/mhollweck/show-your-stack-kit/main/STOP.md
+  and follow it.
+  ```
 
 No calls, no forms, no uploads: the kit is the whole process. Your profile never publishes without your OK, and merging happens only after you opened the pull request yourself.
 
@@ -98,6 +105,7 @@ No calls, no forms, no uploads: the kit is the whole process. Your profile never
 | `journal-template.md` | The journal header and the entry format your agent follows. |
 | `observer-rule.md` | The block that goes at the end of your global rules file, with start and end dates. |
 | `observer-hook.sh` | Optional Claude Code hook: appends each prompt to a local log, prints nothing, self-expires. |
+| `STOP.md` | Stop and reverse: removes the rule, the hook and the local folder; tells you what to send Maria if a profile was already shared. |
 | `EXTRACT.md` | Part 2. Guess-then-reveal flow analysis, inventory diff, short interview, final profile, deck, redaction report, pull request into the private community repo, cleanup. |
 
 ## What an entry looks like

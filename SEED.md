@@ -109,7 +109,7 @@ from the journal header). If I say yes:
      to my home directory in the command:
 
   { "hooks": { "UserPromptSubmit": [ { "hooks": [ { "type": "command",
-    "command": "/ABSOLUTE/PATH/TO/HOME/show-your-stack/observer-hook.sh" } ] } ] } }
+    "command": "/ABSOLUTE/PATH/TO/HOME/Projects/stack-journal/observer-hook.sh" } ] } ] } }
 
 Step 8 · Confirm. Show me a short summary: the journal path, the draft and
 deck paths, where the rule block was written, whether the prompt log is on,

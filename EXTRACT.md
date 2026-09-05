@@ -226,5 +226,6 @@ Phase 7 · Hand-off by pull request. Only after my Phase 6 approval.
 
 Phase 8 · Cleanup (ask first). Offer to remove the observer block (between the
 show-your-stack:observer markers) from my rules file and the observer hook
-from ~/.claude/settings.json. Keep ~/Projects/stack-journal/ as it is: the journal
-and the analysis are mine.
+from ~/.claude/settings.json. Keep
+~/Projects/stack-journal/ as it is: the journal, the analysis, the profile and
+the deck are mine. If I want everything gone instead, follow STOP.md in full.
