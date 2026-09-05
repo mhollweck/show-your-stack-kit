@@ -1,7 +1,7 @@
 #!/bin/bash
 # Show Your Stack observer hook (Claude Code, UserPromptSubmit event).
 # Appends each prompt you send, with a timestamp and the folder it came from,
-# to ~/show-your-stack/prompts.log. Local only, nothing is sent anywhere.
+# to ~/Projects/stack-journal/prompts.log (override the folder with STACK_JOURNAL_DIR). Local only, nothing is sent anywhere.
 #
 # Prints nothing on purpose: on this hook event, stdout is fed back to the
 # agent as context, so a chatty hook would pollute your sessions.
@@ -12,7 +12,7 @@
 #
 # To stop early: delete this file and its entry under "hooks" > "UserPromptSubmit"
 # in ~/.claude/settings.json. Part 2 (EXTRACT.md) offers to do that for you.
-DIR="$HOME/show-your-stack"
+DIR="${STACK_JOURNAL_DIR:-$HOME/Projects/stack-journal}"
 JOURNAL="$DIR/journal.md"
 LOG="$DIR/prompts.log"
 [ -f "$JOURNAL" ] || exit 0

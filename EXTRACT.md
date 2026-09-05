@@ -17,7 +17,7 @@ Ground rules (non-negotiable):
    journal's Allowlist stays excluded here: never read it, never describe what
    that code, product, or client is. Workflow patterns only.
 1. Ask before reading. List what you want to look at and wait for my OK:
-   ~/show-your-stack/ (journal.md, prompts.log, flow-analysis.md if present),
+   ~/Projects/stack-journal/ (journal.md, prompts.log, flow-analysis.md if present),
    my global rules file, project rules files I pick, custom agents, hooks,
    skills or commands, settings permissions, scheduled jobs, MCP server list.
 2. Never read or reproduce .env files, keys, tokens, credentials, billing
@@ -38,7 +38,7 @@ Ground rules (non-negotiable):
    described, at most, as "client work exists, excluded": never by path or
    folder name, in any output.
 
-Phase 0 · Evidence. Ask to read ~/show-your-stack/: journal.md, prompts.log,
+Phase 0 · Evidence. Ask to read ~/Projects/stack-journal/: journal.md, prompts.log,
 and the Part 1 draft stack-submission.md if it exists. If there is no journal
 (I skipped the window), say so and continue in cold mode: skip Phase 1 and ask
 every interview question in Phase 3 instead of pre-filling.
@@ -49,7 +49,7 @@ before I see them, e.g. in how many of my sessions did I open with a spec,
 how many did I delegate to a subagent, how many ran tests before commit (pick
 the three that matter most for this journal). Record my guesses. If the
 journal has an older "Prediction" section instead, use that. Then write
-~/show-your-stack/flow-analysis.md and show it to me:
+~/Projects/stack-journal/flow-analysis.md and show it to me:
   a) By the numbers: window length, days with activity, sessions logged,
      prompts total and per active day (from prompts.log if present), median
      prompt length in words, share of first prompts that were a spec vs a
@@ -201,8 +201,8 @@ flagged for my call. Company names and numbers appear only if I typed them in
 this conversation and confirm them.
 
 Phase 6 · Show me the complete file. I approve or edit. Only then save
-stack-submission.md in ~/show-your-stack/ and regenerate the deck: copy
-deck-template.html from this kit to ~/show-your-stack/deck.html and replace
+stack-submission.md in ~/Projects/stack-journal/ and regenerate the deck: copy
+deck-template.html from this kit to ~/Projects/stack-journal/deck.html and replace
 {{STACK_JSON}} (every occurrence) with the frontmatter as JSON (escape any
 "</script" inside strings). Tell me to open it: that is my talk, ready.
 
@@ -212,9 +212,9 @@ Phase 7 · Hand-off by pull request. Only after my Phase 6 approval.
   b) Handle: propose my GitHub login (`gh api user --jq .login`) as <handle>;
      I can pick another.
   c) Clone or update the repo: `gh repo clone mhollweck/show-your-stack-community
-     ~/show-your-stack/community` (or `git -C ~/show-your-stack/community pull`).
+     ~/Projects/stack-journal/community` (or `git -C ~/Projects/stack-journal/community pull`).
   d) Branch `stack/<handle>`; copy stack-submission.md to `stacks/<handle>.md`
-     in the clone (this ONE file, nothing else from ~/show-your-stack/);
+     in the clone (this ONE file, nothing else from ~/Projects/stack-journal/);
      commit "Stack: <name>"; push the branch.
   e) Show me the PR title and body before creating it: title "Stack: <name>",
      body = my oneLiner plus "Author-approved profile from the Show Your Stack
@@ -226,5 +226,5 @@ Phase 7 · Hand-off by pull request. Only after my Phase 6 approval.
 
 Phase 8 · Cleanup (ask first). Offer to remove the observer block (between the
 show-your-stack:observer markers) from my rules file and the observer hook
-from ~/.claude/settings.json. Keep ~/show-your-stack/ as it is: the journal
+from ~/.claude/settings.json. Keep ~/Projects/stack-journal/ as it is: the journal
 and the analysis are mine.

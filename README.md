@@ -36,8 +36,8 @@ personal projects may be named, and say OK to a names-only baseline of your
 setup. No writing about how you work; that is what the window is for. Then it
 does the deep dive (your agents, hooks, skills, schedules, shell aliases, the
 scripts and tools you built for yourself, with the status of each), writes a
-first draft of your profile to `~/show-your-stack/stack-submission.md`, renders
-your presentation to `~/show-your-stack/deck.html` (open it, arrow keys), then
+first draft of your profile to `~/Projects/stack-journal/stack-submission.md`, renders
+your presentation to `~/Projects/stack-journal/deck.html` (open it, arrow keys), then
 installs a small observer rule (and, if you say yes, a local prompt log) and
 gets out of the way. Last thing it asks: send Maria your GitHub login, so she
 can add you to the private community repo before Part 2.
@@ -45,7 +45,7 @@ can add you to the private community repo before Part 2.
 ## The window (1 to 2 weeks, 0 minutes)
 
 You work like normal. Once per session your agent appends one short entry to
-`~/show-your-stack/journal.md`: what you asked for, how you phrased it, what
+`~/Projects/stack-journal/journal.md`: what you asked for, how you phrased it, what
 it delegated, whether you reviewed the diff, how you checked the result. It
 asks you one question per week, max. When the window closes it reminds you
 once.
@@ -77,7 +77,7 @@ remove the observer rule and the hook.
 - No company secrets. Company and client scope is excluded before any read,
   and workflow patterns are all that gets written about work sessions.
 - Nothing leaves your machine during the window. Everything lives in
-  `~/show-your-stack/`. The only thing that ever moves is the one profile you
+  `~/Projects/stack-journal/`. The only thing that ever moves is the one profile you
   approve, as a pull request you read before it opens.
 - Patterns, not contents. The journal holds paraphrases and counts. Never
   code, never secrets, never names you did not allowlist.
@@ -94,7 +94,7 @@ No calls, no forms, no uploads: the kit is the whole process. Your profile never
 |---|---|
 | `SEED.md` | Part 1. Window, scope tick list, deep dive, day-one draft + deck, journal, observer rule, optional prompt log. |
 | `INVENTORY.md` | How your agent maps your setup: follow the connections, label statuses, keep tool cards, record findings. Used by both parts. |
-| `deck-template.html` | Your presentation, rendered locally from the profile. Open `~/show-your-stack/deck.html`, arrow keys. |
+| `deck-template.html` | Your presentation, rendered locally from the profile. Open `~/Projects/stack-journal/deck.html`, arrow keys. |
 | `journal-template.md` | The journal header and the entry format your agent follows. |
 | `observer-rule.md` | The block that goes at the end of your global rules file, with start and end dates. |
 | `observer-hook.sh` | Optional Claude Code hook: appends each prompt to a local log, prints nothing, self-expires. |

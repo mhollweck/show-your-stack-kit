@@ -13,7 +13,7 @@ leaves this machine during any of this.
    "UserPromptSubmit", remove only the entry whose command ends in
    observer-hook.sh. Keep every other hook. The file must stay valid JSON;
    if "UserPromptSubmit" ends up empty, remove the key.
-3. Local files. Delete the Show Your Stack folder: ~/show-your-stack/
+3. Local files. Delete the Show Your Stack folder: ~/Projects/stack-journal/
    (journal.md, prompts.log, flow-analysis.md, stack-submission.md, deck.html,
    observer-hook.sh, and the community/ clone if present). If the hook
    command or the rule block pointed at a different folder, that folder is

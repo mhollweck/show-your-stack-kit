@@ -14,6 +14,7 @@ Files in this kit, all in the same folder as this one:
 - journal-template.md · the journal header and entry format (you copy it)
 - observer-rule.md · the block that goes into my global rules file
 - observer-hook.sh · optional prompt log for Claude Code (you download it)
+- STOP.md · how to remove all of this again, any time
 Fetch them from the raw URL base of this file (curl -fsSL, or your web fetch
 tool). Fetch a file only when the step below needs it.
 
@@ -25,7 +26,7 @@ Ground rules (non-negotiable):
    never what the code, product, or client is. There is no after-the-fact
    redaction promise: what you never read cannot leak.
 1. Nothing leaves this machine during the window. Everything you write lives in
-   ~/show-your-stack/. The only thing that ever moves is the one profile I
+   ~/Projects/stack-journal/. The only thing that ever moves is the one profile I
    approve at the end of Part 2, as a pull request I read before it opens.
 2. Ask before reading any of my files. Never read or reproduce .env files, keys,
    tokens, credentials, billing pages, or message history.
@@ -39,7 +40,7 @@ three OKs (inventory, rule, hook). Do not ask me to describe how I work; that
 is what the window is for. You do the work: by the end of this session I have
 a first draft of my profile and a presentation I can open, both local.
 
-Step 0 · Already started? If ~/show-your-stack/journal.md exists from an
+Step 0 · Already started? If ~/Projects/stack-journal/journal.md exists from an
 earlier Part 1, keep it, reuse its window and Allowlist, and do only Step 3
 (deep dive) and Step 5 (draft and deck). Then stop.
 
@@ -68,22 +69,25 @@ tool, record findings. If you already know my setup, start from what you know
 and verify it against the files. Never execute anything. Summarize the
 result for the journal as the Baseline (names, counts, locations).
 
-Step 4 · Journal. Fetch journal-template.md. Create ~/show-your-stack/journal.md
-from it: replace START, END and N in the header, keep "How to log" exactly as
+Step 4 · Journal. Everything Show Your Stack writes lives in ONE folder:
+~/Projects/stack-journal/. If I keep my projects somewhere else, ask me once
+and use <that folder>/stack-journal/ everywhere below (and set the DIR default
+at the top of observer-hook.sh to match). Fetch journal-template.md. Create
+~/Projects/stack-journal/journal.md from it: replace START, END and N in the header, keep "How to log" exactly as
 written, and fill in the Allowlist and Baseline sections. Leave "## Entries"
 empty.
 
 Step 5 · First draft and deck. Fetch EXTRACT.md and use its Phase 4 shape and
-slides rules. Write ~/show-your-stack/stack-submission.md as draft v0 from the
+slides rules. Write ~/Projects/stack-journal/stack-submission.md as draft v0 from the
 inventory alone: fill harness, agents, contextMemory, qualityControl and
 versionControl with what the files show (with status labels and the findings),
 leave review, spend, failureStory, weirdThing and gems as "not yet: the window
 fills this in" unless a rules file states them outright, and build slides only
 for the fields that have content. Body: two lines saying this is the day-one
 draft from the inventory and that the behavior fields arrive after END. Then
-render the deck: copy deck-template.html to ~/show-your-stack/deck.html and
+render the deck: copy deck-template.html to ~/Projects/stack-journal/deck.html and
 replace {{STACK_JSON}} (every occurrence) with the frontmatter as JSON (escape
-any "</script" inside strings). Tell me to open ~/show-your-stack/deck.html.
+any "</script" inside strings). Tell me to open ~/Projects/stack-journal/deck.html.
 
 Step 6 · Observer rule. Fetch observer-rule.md, replace START and END, show me
 the block, and ask for my OK. Then append it to the END of my global rules
@@ -93,11 +97,11 @@ For Cursor, Codex, Gemini CLI and others: the equivalent global rules file
 
 Step 7 · Prompt log (Claude Code only, optional, recommended). Offer me this:
 a tiny hook that appends each prompt I send, with a timestamp and the folder
-it came from, to ~/show-your-stack/prompts.log. It gives Part 2 real numbers
+it came from, to ~/Projects/stack-journal/prompts.log. It gives Part 2 real numbers
 (prompts per day, prompt length, how often I start with a spec). It is local,
 deterministic, prints nothing, and stops by itself after END (it reads END
 from the journal header). If I say yes:
-  a) download observer-hook.sh to ~/show-your-stack/observer-hook.sh and make
+  a) download observer-hook.sh to ~/Projects/stack-journal/observer-hook.sh and make
      it executable;
   b) show me this settings change, then add it to ~/.claude/settings.json
      under "hooks" > "UserPromptSubmit". Create the keys if they are missing
@@ -114,5 +118,7 @@ Part 2 (EXTRACT.md from the kit)." Mention that Part 2 ends with a pull
 request into Maria's private community repo, so I should send Maria my GitHub
 login now (`gh api user --jq .login` shows it) and accept her invite when it
 arrives (Part 1 itself needs no GitHub at all). Tell me I can open the
-journal any time and delete lines I do not like. Then stop. Do not log an entry for this setup
+journal any time and delete lines I do not like, and that one line stops
+everything and removes it from my machine: "Fetch STOP.md from the Show Your
+Stack kit and follow it." Then stop. Do not log an entry for this setup
 session; the first real entry comes from my next session.
